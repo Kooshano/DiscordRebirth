@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
@@ -30,7 +31,9 @@ public class AccountPageController {
     @FXML
     Pane informationPane;
     @FXML
-    Pane wholePain;
+    Pane wholePane;
+    @FXML
+    private Pane statePane;
 
     private Client client ;
 
@@ -48,7 +51,8 @@ public class AccountPageController {
         emailLabel.setText(client.getEmail());
         phoneLabel.setText(client.getPhone());
         informationPane.setBackground(new Background(new BackgroundFill(BLACK,null,null)));
-        wholePain.setBackground(new Background(new BackgroundFill(GRAY,null,null)));
+        wholePane.setBackground(new Background(new BackgroundFill(GRAY,null,null)));
+        statePane.setBackground(new Background(new BackgroundFill(SILVER,null,null)));
     }
 
     public void logOut(ActionEvent event) throws IOException, InterruptedException {
@@ -97,5 +101,12 @@ public class AccountPageController {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public void stateChange(ActionEvent event){
+        RadioButton radioButton = (RadioButton) event.getSource();
+        if (radioButton.equals("Online")){
+            System.out.println("Online");
+        }
     }
 }
