@@ -50,29 +50,7 @@ public class ClientMessageSender implements Runnable {
                 }
             }
         } else if (messageKind.equals("changeStateRequest")) {
-            String state = "";
-            System.out.println("""
-                    Choose one of below:
-                    1- Online
-                    2- Idle
-                    3- Do Not Disturb
-                    4- Invisible""");
-            while (true) {
-                String inp = input.nextLine();
-                if (inp.equals("1")) {
-                    state = "Online";
-                } else if (inp.equals("2")) {
-                    state = "Idle";
-                } else if (inp.equals("3")) {
-                    state = "Do Not Disturb";
-                } else if (inp.equals("4")) {
-                    state = "Offline";
-                }
-                if (Objects.equals(inp, "exit")) {
-                    break;
-                }
-                sendChangeStateRequest(sender, state);
-            }
+            sendChangeStateRequest(sender, secondData);
         } else if (messageKind.equals("blockRequest")) {
             sendBlockRequest(sender, secondData);
         } else if (messageKind.equals("createGroupRequest")) {
