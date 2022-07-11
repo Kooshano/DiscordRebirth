@@ -41,6 +41,7 @@ public class ClientHandler implements Runnable {
                     return;
                 }
                 client = (Client) inputStream.readObject();
+                System.out.println(client.getUsername() + ": " + client.getPassword());
                 if (!Objects.equals(client.getUsername(), "exitProcessRequest")) {
                     if (Objects.equals(choice.getType(), "signInRequest")) {
                         if (signIn(client)) {
@@ -223,6 +224,7 @@ public class ClientHandler implements Runnable {
      * @throws IOException
      */
     public boolean signIn(Client client) throws IOException {
+        System.out.println("sign in");
         for (ClientHandler clientHandler : Server.getClients()) {
             if (Objects.equals(clientHandler.getClient().getUsername(), client.getUsername()) && clientHandler != this) {
                 try {

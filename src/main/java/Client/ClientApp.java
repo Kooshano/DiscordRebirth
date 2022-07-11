@@ -74,14 +74,7 @@ public class ClientApp {
             }
             //change the user state
             else if (inp.equals("5")) {
-                ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), null, null, "changeStateRequest");
-                Thread clientSenderThread = new Thread(clientMessageSender);
-                clientSenderThread.start();
-                try {
-                    clientSenderThread.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
             }
             //change picture of profile
             else if (inp.equals("6")) {
@@ -507,6 +500,7 @@ public class ClientApp {
 
 
     public String signIn(String username, String password) throws IOException, InterruptedException {
+        System.out.println("Sign In");
         while (true) {
             Message message = new Message(null, null, null, "signInRequest");
             outputStream.writeObject(message);
@@ -522,6 +516,7 @@ public class ClientApp {
                 else {
                     return "Username or password is invalid";
                 }
+
             } catch (IllegalArgumentException e) {
                 Client clientExit = new Client("username@mail.com", "A123*x*x*321A", "exitProcessRequest", "09111111111");
                 outputStream.writeObject(clientExit);
@@ -567,6 +562,16 @@ public class ClientApp {
         Thread clientSenderThread = new Thread(clientMessageSender);
         clientSenderThread.start();
         Thread.sleep(500);
+    }
+    public void changeState(String state){
+        ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), state, null, "changeStateRequest");
+        Thread clientSenderThread = new Thread(clientMessageSender);
+        clientSenderThread.start();
+        try {
+            clientSenderThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -42,11 +42,13 @@ public class SignInController {
         String username = usernameTextField.getText();
         String password = passwordField.getText();
         String state = SavedData.getClientApp().signIn(username,password);
+        Thread.sleep(500);
         Client client = SavedData.getClientApp().getClient();
 
 
         //System.out.println(state);
         if (state.equals("Signed In Successfully")) {
+            System.out.println("Signed In Successfully");
             AccountPageController accountPageController = loader.getController();
             accountPageController.setClient(client);
             accountPageController.displayColor();
