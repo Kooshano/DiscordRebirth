@@ -40,20 +40,7 @@ public class ClientApp {
             }
             // search in all chats and show chats with the same sender and receiver or vice versa
             if (inp.equals("1")) {
-                System.out.println("Enter receiver's name");
-                String receiver = input.nextLine();
-                clientMessageReceiver.setCurrentChat(receiver);
-                ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, receiver, client.getUsername(), null, "private");
-                Thread clientSenderThread = new Thread(clientMessageSender);
-                clientSenderThread.start();
-                //wait for Threads to finish
-                try {
-                    clientSenderThread.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                //resetting current chat
-                clientMessageReceiver.setCurrentChat(null);
+
             }
             //send a friend request to another client
             else if (inp.equals("2")) {
@@ -468,13 +455,6 @@ public class ClientApp {
                 }
             }
             //log out from account
-            else if (inp.equals("11")) {
-                ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, null, null, null, "logOutRequest");
-                Thread clientSenderThread = new Thread(clientMessageSender);
-                clientSenderThread.start();
-                break;
-            }
-            Thread.sleep(700);
         }
     }
 
@@ -561,4 +541,29 @@ public class ClientApp {
     public Client getClient() {
         return client;
     }
+    public void openPrivateChat(String receiver){
+        clientMessageReceiver.setCurrentChat(receiver);
+    }
+    public void sendPrivateChat(String receiver,String message){
+        ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, receiver, client.getUsername(), message, "private");
+        Thread clientSenderThread = new Thread(clientMessageSender);
+        clientSenderThread.start();
+        //wait for Threads to finish
+        try {
+            clientSenderThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //resetting current chat
+    }
+    public void closePrivateChat(String receiver){
+        clientMessageReceiver.setCurrentChat(null);
+    }
+    public void logOut() throws InterruptedException {
+        ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, null, null, null, "logOutRequest");
+        Thread clientSenderThread = new Thread(clientMessageSender);
+        clientSenderThread.start();
+        Thread.sleep(500);
+    }
+
 }
