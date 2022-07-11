@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="336.0" scaleShape="false" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.SignInController">
+   <children>
+      <ImageView fitHeight="568.0" fitWidth="336.0">
+         <image>
+            <Image url="@../../../Dependencies/background.jpg" />
+         </image>
+      </ImageView>
+      <HBox layoutY="-4.0" prefHeight="577.0" prefWidth="336.0">
+         <children>
+            <VBox prefHeight="400.0" prefWidth="236.0">
+               <children>
+                  <Label text="Username" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="100.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Password" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="550.0" prefWidth="262.0">
+               <children>
+                  <TextField fx:id="usernameTextField" promptText="Enter your username">
+                     <VBox.margin>
+                        <Insets top="100.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <PasswordField fx:id="passwordField" blendMode="SCREEN" promptText="Enter your password">
+                     <VBox.margin>
+                        <Insets top="47.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <Button fx:id="loginButton" onAction="#login" text="Login">
+                     <VBox.margin>
+                        <Insets left="50.0" top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <Button contentDisplay="CENTER" layoutX="93.0" layoutY="425.0" mnemonicParsing="false" onAction="#goToSignUp" prefHeight="26.0" prefWidth="150.0" text="Sign Up">
+         <effect>
+            <ColorAdjust />
+         </effect>
+      </Button>
+      <Label fx:id="messageLabel" layoutX="33.0" layoutY="273.0" prefHeight="111.0" prefWidth="269.0" textFill="#f2f0f0">
+         <font>
+            <Font size="27.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

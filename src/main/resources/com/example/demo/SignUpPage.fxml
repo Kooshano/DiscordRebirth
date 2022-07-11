@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="568.0" prefWidth="336.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.SignUpController">
+   <children>
+      <HBox prefHeight="568.0" prefWidth="336.0">
+         <children>
+            <VBox prefHeight="568.0" prefWidth="176.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#back" text="&lt;---- Back">
+                     <VBox.margin>
+                        <Insets left="20.0" top="40.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Label text="Email">
+                     <VBox.margin>
+                        <Insets left="20.0" top="33.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Username">
+                     <VBox.margin>
+                        <Insets left="20.0" top="50.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Password">
+                     <VBox.margin>
+                        <Insets left="20.0" top="50.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Phone">
+                     <VBox.margin>
+                        <Insets left="20.0" top="50.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="568.0" prefWidth="181.0">
+               <children>
+                  <TextField fx:id="emailTextField">
+                     <VBox.margin>
+                        <Insets right="20.0" top="101.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="usernameTextField">
+                     <VBox.margin>
+                        <Insets right="20.0" top="53.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <PasswordField fx:id="passwordField">
+                     <VBox.margin>
+                        <Insets right="20.0" top="54.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <TextField fx:id="phoneTextField">
+                     <VBox.margin>
+                        <Insets right="20.0" top="52.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button layoutX="86.0" layoutY="401.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="26.0" prefWidth="145.0" text="Create your account" />
+      <Label fx:id="messageLabel" layoutX="18.0" layoutY="442.0" prefHeight="114.0" prefWidth="298.0" textAlignment="CENTER">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
