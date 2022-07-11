@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import Client.Client;
+import Client.*;
 import Client.ClientApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -51,9 +51,10 @@ public class AccountPageController {
         wholePain.setBackground(new Background(new BackgroundFill(GRAY,null,null)));
     }
 
-    public void logOut(ActionEvent event) throws IOException {
+    public void logOut(ActionEvent event) throws IOException, InterruptedException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SignInPage.fxml"));
         root = loader.load();
+        SavedData.getClientApp().logOut();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Discord");

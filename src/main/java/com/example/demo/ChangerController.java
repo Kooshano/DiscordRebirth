@@ -63,6 +63,7 @@ public class ChangerController {
 
         AccountPageController accountPageController = loader.getController();
         accountPageController.setClient(client);
+        accountPageController.displayColor();
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setResizable(false);

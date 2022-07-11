@@ -45,11 +45,12 @@ public class SignInController {
         String password = passwordField.getText();
         String state = SavedData.getClientApp().signIn(username,password);
         Client client = SavedData.getClientApp().getClient();
-        AccountPageController accountPageController = loader.getController();
-        accountPageController.setClient(client);
-        accountPageController.displayColor();
+
 
         if (state.equals("Signed In Successfully")) {
+            AccountPageController accountPageController = loader.getController();
+            accountPageController.setClient(client);
+            accountPageController.displayColor();
             messageLabel.setText(state);
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setResizable(false);
