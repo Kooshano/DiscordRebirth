@@ -53,7 +53,6 @@ public class AccountPageController {
         phoneLabel.setText(client.getPhone());
         informationPane.setBackground(new Background(new BackgroundFill(BLACK,null,null)));
         wholePane.setBackground(new Background(new BackgroundFill(GRAY,null,null)));
-        statePane.setBackground(new Background(new BackgroundFill(SILVER,null,null)));
     }
 
     public void logOut(ActionEvent event) throws IOException, InterruptedException {
@@ -105,8 +104,19 @@ public class AccountPageController {
     }
 
     public void stateChange(ActionEvent event){
-        RadioButton radioButton = (RadioButton) event.getSource();
-        if (radioButton.getText().equals("Online")){
+        Button button = (Button) event.getSource();
+        if (button.getText().equals("Online")){
+            SavedData.getClientApp().changeState("Online");
+        }
+        else if (button.getText().equals("Idle")){
+            SavedData.getClientApp().changeState("Idle");
+        }
+        else if (button.getText().equals("Do not disturb")){
+            SavedData.getClientApp().changeState("Do Not Disturb");
+        }
+        else if (button.getText().equals("Invisible")){
+            SavedData.getClientApp().changeState("Invisible");
         }
     }
+
 }
