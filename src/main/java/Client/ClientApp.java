@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class ClientApp {
     private ObjectOutputStream outputStream;
     private ObjectInputStream inputStream;
-    private static Client client;
+    private Client client;
     private Scanner input = new Scanner(System.in);
     private ClientMessageReceiver clientMessageReceiver;
     private Thread clientReceiverThread;
@@ -558,4 +558,7 @@ public class ClientApp {
         clientSenderThread.start();
     }
 
+    public Client getClient() {
+        return client;
+    }
 }

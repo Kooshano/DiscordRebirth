@@ -17,6 +17,7 @@ public class ClientHandler implements Runnable {
     private Client client;
 
     public ClientHandler(Socket clientSocket) throws IOException, ClassNotFoundException {
+        System.out.println(Data.getAllUsers());
         System.out.println("Client connected");
         this.clientSocket = clientSocket;
         try {
@@ -868,6 +869,19 @@ public class ClientHandler implements Runnable {
             }
         }
     }
+//    /**
+//     * change email of client
+//     *
+//     * @param message message with new password
+//     */
+//    public void changeEmail(Message message) {
+//        //change password of user
+//        for (ClientHandler clientHandler : Server.getClients()) {
+//            if (clientHandler.getClient().getUsername().equals(message.getSender())) {
+//                clientHandler.getClient().set(message.getBody());
+//            }
+//        }
+//    }
 
     /**
      * private chat
