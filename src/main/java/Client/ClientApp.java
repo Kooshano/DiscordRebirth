@@ -519,6 +519,9 @@ public class ClientApp {
                     clientMessageReceiver.setSign(false);
                     return "Signed In Successfully";
                 }
+                else {
+                    return "Username or password is invalid";
+                }
             } catch (IllegalArgumentException e) {
                 Client clientExit = new Client("username@mail.com", "A123*x*x*321A", "exitProcessRequest", "09111111111");
                 outputStream.writeObject(clientExit);

@@ -60,6 +60,8 @@ public class AccountPageController {
         stage.setTitle("Discord");
         stage.setScene(scene);
         stage.show();
+        ClientApp clientApp = new ClientApp();
+        SavedData.setClientApp(clientApp);
     }
 
     public void change(String changeWhat,ActionEvent event) throws IOException {

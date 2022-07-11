@@ -74,9 +74,9 @@
             <ColorAdjust />
          </effect>
       </Button>
-      <Label fx:id="messageLabel" layoutX="33.0" layoutY="273.0" prefHeight="111.0" prefWidth="269.0" textFill="WHITE">
+      <Label fx:id="messageLabel" alignment="TOP_CENTER" layoutX="33.0" layoutY="273.0" prefHeight="111.0" prefWidth="269.0" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0" />
          </font></Label>
    </children>
 </AnchorPane>

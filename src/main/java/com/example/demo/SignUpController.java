@@ -53,6 +53,8 @@ public class SignUpController {
             stage.setScene(scene);
             stage.show();
             messageLabel.setText("");
+            ClientApp clientApp = new ClientApp();
+            SavedData.setClientApp(clientApp);
         }
         else {
             messageLabel.setText(state);

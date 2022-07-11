@@ -24,8 +24,6 @@ public class SignInController {
     @FXML
     private PasswordField passwordField;
     @FXML
-    private Button loginButton;
-    @FXML
     private Label messageLabel;
 
     private Client client;
@@ -47,6 +45,7 @@ public class SignInController {
         Client client = SavedData.getClientApp().getClient();
 
 
+        //System.out.println(state);
         if (state.equals("Signed In Successfully")) {
             AccountPageController accountPageController = loader.getController();
             accountPageController.setClient(client);
@@ -61,6 +60,7 @@ public class SignInController {
         }
         else {
             messageLabel.setText(state);
+
         }
     }
 
