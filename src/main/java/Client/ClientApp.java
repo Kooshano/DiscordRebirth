@@ -573,5 +573,4 @@ public class ClientApp {
             e.printStackTrace();
         }
     }
-
 }
