@@ -467,14 +467,6 @@ public class ClientApp {
                     }
                 }
             }
-            //change password
-            else if (inp.equals("10")) {
-                System.out.println("Enter new password");
-                String newPassword = input.nextLine();
-                ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), newPassword, null, "changePasswordRequest");
-                Thread clientSenderThread = new Thread(clientMessageSender);
-                clientSenderThread.start();
-            }
             //log out from account
             else if (inp.equals("11")) {
                 ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, null, null, null, "logOutRequest");
@@ -543,7 +535,7 @@ public class ClientApp {
                 outputStream.writeObject(clientCheck);
                 Thread.sleep(500);
                 if (clientMessageReceiver.isSign()) {
-                    client = clientCheck;
+                    client = clientMessageReceiver.getClient();
                     clientMessageReceiver.setSign(false);
                     return "Signed In Successfully";
                 }
@@ -559,6 +551,11 @@ public class ClientApp {
     public void exit() throws IOException {
         Message message = new Message(null, null, null, "exitRequest");
         outputStream.writeObject(message);
+    }
+    public void changePassword(String newPassword){
+        ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), newPassword, null, "changePasswordRequest");
+        Thread clientSenderThread = new Thread(clientMessageSender);
+        clientSenderThread.start();
     }
 
 }

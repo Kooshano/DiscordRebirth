@@ -13,7 +13,7 @@ public class DiscordApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignInPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setResizable(false);
-        stage.setTitle("Hello!");
+        stage.setTitle("Discord");
         stage.setScene(scene);
         stage.show();
     }

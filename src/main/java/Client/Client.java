@@ -155,4 +155,12 @@ public class Client implements Serializable {
     public String getCurrentState() {
         return currentState;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
 }
