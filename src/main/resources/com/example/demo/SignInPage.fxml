@@ -74,7 +74,7 @@
             <ColorAdjust />
          </effect>
       </Button>
-      <Label fx:id="messageLabel" layoutX="33.0" layoutY="273.0" prefHeight="111.0" prefWidth="269.0" textFill="#f2f0f0">
+      <Label fx:id="messageLabel" layoutX="33.0" layoutY="273.0" prefHeight="111.0" prefWidth="269.0" textFill="WHITE">
          <font>
             <Font size="27.0" />
          </font></Label>
