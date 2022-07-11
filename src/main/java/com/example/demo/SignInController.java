@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import Client.Client;
 import Client.ClientApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +28,7 @@ public class SignInController {
     private Label messageLabel;
 
     private ClientApp clientApp = new ClientApp();
+    private Client client;
 
     private Stage stage;
     private Scene scene;
@@ -73,4 +75,7 @@ public class SignInController {
         stage.show();
     }
 
+    public void setClientApp(Client client) {
+        this.client = client;
+    }
 }

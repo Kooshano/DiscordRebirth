@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import Client.ClientApp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,6 +14,7 @@ public class DiscordApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignInPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        ClientApp clientApp = new ClientApp();
         stage.setResizable(false);
         stage.setTitle("Discord");
         stage.setScene(scene);
