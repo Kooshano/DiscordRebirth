@@ -1,11 +1,27 @@
 package Client;
 
 public class SavedData {
-    private ClientApp clientApp;
-    private Client client;
+    private static ClientApp clientApp;
+    private static Client client;
 
     public SavedData(ClientApp clientApp) {
-        this.clientApp = clientApp;
-        this.client = clientApp.getClient();
+        SavedData.clientApp = clientApp;
+        SavedData.client = clientApp.getClient();
+    }
+
+    public static Client getClient() {
+        return client;
+    }
+
+    public static ClientApp getClientApp() {
+        return clientApp;
+    }
+
+    public static void setClient(Client client) {
+        SavedData.client = client;
+    }
+
+    public static void setClientApp(ClientApp clientApp) {
+        SavedData.clientApp = clientApp;
     }
 }
