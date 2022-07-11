@@ -522,7 +522,7 @@ public class ClientApp {
             System.out.println(e.getMessage());
             return e.getMessage();
         }
-        return username;
+        return "This Username Is Already Taken";
     }
 
 
