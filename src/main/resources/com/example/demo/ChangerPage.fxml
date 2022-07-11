@@ -13,8 +13,8 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="126.0" layoutY="157.0" prefHeight="26.0" prefWidth="226.0" />
-      <Button layoutX="352.0" layoutY="240.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="69.0" text="change" />
+      <TextField fx:id="changeTextField" layoutX="126.0" layoutY="157.0" prefHeight="26.0" prefWidth="226.0" />
+      <Button layoutX="352.0" layoutY="240.0" onAction="#change" prefHeight="26.0" prefWidth="69.0" text="change" />
       <Button layoutX="74.0" layoutY="241.0" mnemonicParsing="false" onAction="#back" text="&lt;----Back" />
    </children>
 </AnchorPane>

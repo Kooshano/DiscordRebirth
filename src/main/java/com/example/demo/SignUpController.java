@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import Client.ClientApp;
+import Client.SavedData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +27,6 @@ public class SignUpController {
     @FXML
     Label messageLabel;
 
-    private ClientApp clientApp = new ClientApp();
 
     private Stage stage;
     private Scene scene;
@@ -43,7 +43,7 @@ public class SignUpController {
         String username = usernameTextField.getText();
         String password = passwordField.getText();
         String phone = phoneTextField.getText();
-        String state = clientApp.signUp(username,password,email,phone);
+        String state = SavedData.getClientApp().signUp(username,password,email,phone);
         if (state.equals("Sign Up Was Successful")) {
             System.out.println(state);
             messageLabel.setText(state);

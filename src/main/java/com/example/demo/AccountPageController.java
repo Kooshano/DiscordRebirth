@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import Client.Client;
 import Client.ClientApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,30 +32,21 @@ public class AccountPageController {
     @FXML
     Pane wholePain;
 
-    private ClientApp clientApp = new ClientApp();
+    private Client client ;
 
     private Stage stage;
     private Scene scene;
     private Parent root;
 
-    private static String  username;
-    private static String email;
-    private static String phone;
 
     public AccountPageController() throws IOException {
     }
 
-    public void display(String username,String email,String phone){
-        AccountPageController.username = username;
-        AccountPageController.email = email;
-        AccountPageController.phone =phone;
-
-    }
 
     public void displayColor(){
-        usernameLabel.setText(username);
-        emailLabel.setText(email);
-        phoneLabel.setText(phone);
+        usernameLabel.setText(client.getUsername());
+        emailLabel.setText(client.getEmail());
+        phoneLabel.setText(client.getPhone());
         informationPane.setBackground(new Background(new BackgroundFill(BLACK,null,null)));
         wholePain.setBackground(new Background(new BackgroundFill(GRAY,null,null)));
     }
@@ -74,7 +66,9 @@ public class AccountPageController {
         root = loader.load();
 
         ChangerController changerController = loader.getController();
-        changerController.change(changeWhat);
+        changerController.setClient(client);
+        changerController.getMessageLabel().setText("Enter your new " + changeWhat + "\n then press change button");
+        changerController.setChangeWhat(changeWhat);
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -98,4 +92,7 @@ public class AccountPageController {
         change("phone",event);
     }
 
+    public void setClient(Client client) {
+        this.client = client;
+    }
 }

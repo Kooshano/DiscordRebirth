@@ -2,6 +2,7 @@ package com.example.demo;
 
 import Client.Client;
 import Client.ClientApp;
+import Client.SavedData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,15 +28,13 @@ public class SignInController {
     @FXML
     private Label messageLabel;
 
-    private ClientApp clientApp = new ClientApp();
     private Client client;
-
+    
     private Stage stage;
     private Scene scene;
     private Parent root;
 
     public SignInController() throws IOException {
-        //loginButton.setBackground(new Background(new BackgroundFill(RED,null,null)));
     }
 
     @FXML
@@ -44,10 +43,10 @@ public class SignInController {
         root = loader.load();
         String username = usernameTextField.getText();
         String password = passwordField.getText();
-        String state = clientApp.signIn(username,password);
-
+        String state = SavedData.getClientApp().signIn(username,password);
+        Client client = SavedData.getClientApp().getClient();
         AccountPageController accountPageController = loader.getController();
-        accountPageController.display(username,"DASD","8569");
+        accountPageController.setClient(client);
         accountPageController.displayColor();
 
         if (state.equals("Signed In Successfully")) {
