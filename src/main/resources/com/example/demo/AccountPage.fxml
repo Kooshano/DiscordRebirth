@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="wholePain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="635.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.AccountPageController">
+<AnchorPane fx:id="wholePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="635.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.AccountPageController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" />
       <Label layoutX="174.0" layoutY="8.0" prefHeight="30.0" prefWidth="112.0" text="My Account" textFill="#0d0d0d">
@@ -40,7 +40,7 @@
             <Button layoutX="361.0" layoutY="188.0" mnemonicParsing="false" onAction="#changePhone" text="Edit" />
             <VBox fx:id="statePane" layoutX="275.0" layoutY="242.0" prefHeight="155.0" prefWidth="122.0">
                <children>
-                  <RadioButton mnemonicParsing="false" onAction="#s" prefHeight="34.0" prefWidth="88.0" text="Online" />
+                  <RadioButton mnemonicParsing="false" onAction="#stateChange" prefHeight="34.0" prefWidth="88.0" text="Online" />
                   <RadioButton mnemonicParsing="false" prefHeight="39.0" prefWidth="88.0" text="Idle" />
                   <RadioButton mnemonicParsing="false" prefHeight="32.0" prefWidth="110.0" text="Do not disturb" />
                   <RadioButton mnemonicParsing="false" prefHeight="40.0" prefWidth="88.0" text="Invisible" />

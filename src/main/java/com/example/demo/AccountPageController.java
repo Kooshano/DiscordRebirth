@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
@@ -105,8 +106,7 @@ public class AccountPageController {
 
     public void stateChange(ActionEvent event){
         RadioButton radioButton = (RadioButton) event.getSource();
-        if (radioButton.equals("Online")){
-            System.out.println("Online");
+        if (radioButton.getText().equals("Online")){
         }
     }
 }
