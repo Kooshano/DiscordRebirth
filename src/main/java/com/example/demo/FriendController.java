@@ -43,11 +43,10 @@ public class FriendController {
     }
 
     public void showPendingRequests() throws IOException {
-        System.out.println("ssss");
         SavedData.getClientApp().showFriendsRequest();
         System.out.println("damoon" + SavedData.getFriendRequests());
         pendingRequests.getItems().removeAll();
-        System.out.println("^666" + pendingRequests.getItems());
+        System.out.println("666" + pendingRequests.getItems());
         pendingRequests.getItems().addAll(SavedData.getFriendRequests());
 
     }
