@@ -33,7 +33,7 @@ public class ClientMessageReceiver implements Runnable {
                     if (message.getType().equals("private")) {
                         //if we are in the same chat
                         if (message.getSender().equals(currentChat)) {
-                            System.out.println(message.getSender() + ": " + message.getBody());
+                            SavedData.addToCurrentChatMessages(message);
                         }
                     } else if (message.getType().equals("friendRequestHistoryResponse")) {
                         SavedData.addToFriendRequest(message.getSender());
