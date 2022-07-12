@@ -28,6 +28,7 @@ public class AccountController {
     }
 
     public void moveToFriend(ActionEvent event) throws IOException {
+        System.out.println("dddd");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Friends.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
