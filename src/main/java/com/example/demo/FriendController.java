@@ -129,6 +129,9 @@ public class FriendController implements Initializable {
 
     }
 
+    public void block(){
+    }
+
     public void back(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Account.fxml"));
         root = loader.load();
