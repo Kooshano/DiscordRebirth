@@ -2,6 +2,7 @@ package Client;
 
 import Model.Message;
 import com.example.demo.WarningController;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -64,15 +65,26 @@ public class ClientMessageReceiver implements Runnable {
                         System.out.println(message.getBody());
                     } else if (message.getType().equals("warning")) {
                         System.out.println(message.getBody());
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Warning.fxml"));
-                        Parent root = loader.load();
-                        WarningController controller = loader.getController();
-                        controller.setMessage(message.getBody());
-                        Stage stage = new Stage();
-                        stage.setResizable(false);
-                        Scene scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Warning.fxml"));
+                                Parent root = null;
+                                try {
+                                    root = loader.load();
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                WarningController controller = loader.getController();
+                                controller.setMessage(message.getBody());
+                                Stage stage = new Stage();
+                                stage.setResizable(false);
+                                Scene scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
+                            }
+                        });
+
                     } else if (message.getType().equals("terminate")) {
                         if (message.getBody() != null) {
                             System.out.println(message.getBody());
