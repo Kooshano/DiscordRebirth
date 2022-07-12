@@ -50,4 +50,8 @@ public class SavedData {
     public static void addToFriendRequest(String friendRequest) {
         friendRequests.add(friendRequest);
     }
+
+    public static ArrayList<String> getFriendRequests() {
+        return friendRequests;
+    }
 }

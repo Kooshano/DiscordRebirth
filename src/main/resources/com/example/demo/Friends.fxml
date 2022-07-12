@@ -15,7 +15,10 @@
         <tabs>
           <Tab text="Pending">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="pendingRequests" layoutX="12.0" layoutY="16.0" prefHeight="338.0" prefWidth="574.0" />
+                     </children></AnchorPane>
             </content>
           </Tab>
           <Tab text="Online">

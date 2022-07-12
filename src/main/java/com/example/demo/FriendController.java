@@ -36,15 +36,12 @@ public class FriendController {
         }
         else {
             friendRequestResultLabel.setTextFill(GREEN);
-            allFriendsListView.getItems().addAll(SavedData.getFriends());
         }
         friendRequestResultLabel.setText(result);
-
-
     }
 
     public void showPendingRequests(){
-
+        pendingRequests.getItems().addAll(SavedData.getFriendRequests());
     }
 
 
