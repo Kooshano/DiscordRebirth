@@ -80,11 +80,6 @@ public class ClientApp {
             }
             //block another client
             else if (inp.equals("7")) {
-                System.out.println("Enter receiver name");
-                String receiver = input.nextLine();
-                ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), receiver, null, "blockRequest");
-                Thread clientSenderThread = new Thread(clientMessageSender);
-                clientSenderThread.start();
             }
             //creating a new group
             else if (inp.equals("8")) {
@@ -207,7 +202,7 @@ public class ClientApp {
                                     clientSenderThread41.start();
                                     clientSenderThread41.join();
                                     String ability = "";
-                                    while (!ability.equals("finish")) {
+                                    while (true) {
                                         ability = input.nextLine();
                                         if (ability.equals("finish")) {
                                             flag2 = true;
@@ -569,6 +564,11 @@ public class ClientApp {
     }
     public void answerFriendRequest(String receiver,String answer){
         ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), answer,receiver, "answerFriendRequest");
+        Thread clientSenderThread = new Thread(clientMessageSender);
+        clientSenderThread.start();
+    }
+    public void block(String receiver){
+        ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), receiver, null, "blockRequest");
         Thread clientSenderThread = new Thread(clientMessageSender);
         clientSenderThread.start();
     }
