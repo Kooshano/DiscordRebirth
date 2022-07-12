@@ -14,7 +14,7 @@
             <Image url="@../../../Dependencies/error.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="219.0" prefHeight="180.0" prefWidth="600.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="191.0" prefHeight="180.0" prefWidth="600.0" textFill="RED">
          <font>
             <Font size="20.0" />
          </font>
