@@ -117,4 +117,17 @@ public class ProfilePageController {
         }
     }
 
+    public void back(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Account.fxml"));
+        root = loader.load();
+        AccountController accountController = loader.getController();
+        accountController.setClient(client);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
+        scene = new Scene(root);
+        stage.setTitle("Discord");
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
