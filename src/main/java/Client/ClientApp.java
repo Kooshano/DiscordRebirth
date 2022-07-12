@@ -575,11 +575,6 @@ public class ClientApp {
         ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), null, null, "friendRequestHistory");
         Thread clientSenderThread = new Thread(clientMessageSender);
         clientSenderThread.start();
-        try {
-            clientSenderThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
 }
