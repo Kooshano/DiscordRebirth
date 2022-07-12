@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static javafx.scene.paint.Color.GREEN;
@@ -33,6 +34,8 @@ public class FriendController implements Initializable {
     private ListView pendingRequests;
     @FXML
     private Label chosenPending;
+    @FXML
+    private ListView onlineFriendsListView;
 
     private Client client;
 
@@ -106,6 +109,24 @@ public class FriendController implements Initializable {
         pendingRequests.getItems().remove(delete);
     }
 
+    public void showAllFriends() throws InterruptedException {
+        SavedData.getClientApp().showFriends();
+        Thread.sleep(500);
+        allFriendsListView.getItems().setAll(SavedData.getFriends());
+    }
+
+    public void showOnlineFriends() throws InterruptedException {
+        SavedData.getClientApp().showFriends();
+        Thread.sleep(500);
+        ArrayList<String> friends = SavedData.getFriends();
+        for (String s : friends){
+            if (s.split(": ")[0].equals("Online")){
+                onlineFriendsListView.getItems().addAll(s.split(": ")[1]);
+            }
+        }
+
+    }
+
     public void back(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Account.fxml"));
         root = loader.load();
@@ -123,9 +144,7 @@ public class FriendController implements Initializable {
         this.client = client;
     }
 
-    public void showAllFriends() throws InterruptedException {
-        SavedData.getClientApp().showFriends();
-        Thread.sleep(500);
-        allFriendsListView.getItems().setAll(SavedData.getFriends());
-    }
+
+
+
 }
