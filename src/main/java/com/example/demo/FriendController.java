@@ -83,6 +83,7 @@ public class FriendController implements Initializable {
     }
 
     public void acceptPending(ActionEvent event){
+        System.out.println(chosenPending.getText());
         SavedData.getClientApp().answerFriendRequest(chosenPending.getText(),"yes");
         Object delete = null;
         for (Object i :pendingRequests.getItems()){
@@ -110,12 +111,15 @@ public class FriendController implements Initializable {
     }
 
     public void showAllFriends() throws InterruptedException {
+        System.out.println("ssss");
         SavedData.getClientApp().showFriends();
-        Thread.sleep(500);
+        //Thread.sleep(500);
+        System.out.println("Damoon" + SavedData.getFriends());
         allFriendsListView.getItems().setAll(SavedData.getFriends());
     }
 
     public void showOnlineFriends() throws InterruptedException {
+        onlineFriendsListView.getItems().removeAll();
         SavedData.getClientApp().showFriends();
         Thread.sleep(500);
         ArrayList<String> friends = SavedData.getFriends();
