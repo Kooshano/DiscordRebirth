@@ -119,7 +119,8 @@ public class FriendController implements Initializable {
     }
 
     public void showOnlineFriends() throws InterruptedException {
-        onlineFriendsListView.getItems().removeAll();
+        ArrayList empty = new ArrayList<>();
+        onlineFriendsListView.getItems().setAll(empty);
         SavedData.getClientApp().showFriends();
         Thread.sleep(500);
         ArrayList<String> friends = SavedData.getFriends();
