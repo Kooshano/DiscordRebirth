@@ -24,7 +24,7 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Button contentDisplay="TOP" layoutX="91.0" layoutY="13.0" minWidth="49.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="67.0" style="-fx-background-radius: 1000; -fx-background-color: #74B3E1#74B3E1;" text="Friends" textAlignment="CENTER" textFill="WHITE">
+      <Button contentDisplay="TOP" layoutX="91.0" layoutY="13.0" minWidth="49.0" mnemonicParsing="false" onAction="#moveToFriend" prefHeight="31.0" prefWidth="67.0" style="-fx-background-radius: 1000; -fx-background-color: #74B3E1#74B3E1;" text="Friends" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="10.0" />
          </font>

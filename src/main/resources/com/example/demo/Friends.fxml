@@ -37,7 +37,7 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextField fx:id="addFriendText" layoutX="84.0" layoutY="41.0" prefHeight="26.0" prefWidth="424.0" promptText="Enter a username" />
-                        <Label fx:id="friendRequestResultLabel" layoutX="84.0" layoutY="67.0" prefHeight="18.0" prefWidth="424.0" textFill="WHITE">
+                        <Label fx:id="friendRequestResultLabel" layoutX="84.0" layoutY="67.0" prefHeight="18.0" prefWidth="424.0">
                            <font>
                               <Font size="15.0" />
                            </font>
