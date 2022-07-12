@@ -111,10 +111,8 @@ public class FriendController implements Initializable {
     }
 
     public void showAllFriends() throws InterruptedException {
-        System.out.println("ssss");
         SavedData.getClientApp().showFriends();
-        //Thread.sleep(500);
-        System.out.println("Damoon" + SavedData.getFriends());
+        Thread.sleep(500);
         allFriendsListView.getItems().setAll(SavedData.getFriends());
     }
 
@@ -124,8 +122,8 @@ public class FriendController implements Initializable {
         Thread.sleep(500);
         ArrayList<String> friends = SavedData.getFriends();
         for (String s : friends){
-            if (s.split(": ")[0].equals("Online")){
-                onlineFriendsListView.getItems().addAll(s.split(": ")[1]);
+            if (s.split(": ")[1].equals("Online")){
+                onlineFriendsListView.getItems().addAll(s.split(": ")[0]);
             }
         }
 
