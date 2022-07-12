@@ -17,7 +17,8 @@ public class FriendController {
     private Label friendRequestResultLabel;
     @FXML
     private ListView allFriendsListView;
-
+    @FXML
+    private ListView pendingRequests;
 
     public void addFriend(ActionEvent event) throws InterruptedException {
         if (friendRequestResultLabel.equals("Hm, didn't work. Double check that the capitalization,\n" +
@@ -39,6 +40,10 @@ public class FriendController {
         }
         friendRequestResultLabel.setText(result);
 
+
+    }
+
+    public void showPendingRequests(){
 
     }
 
