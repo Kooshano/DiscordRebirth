@@ -42,7 +42,7 @@ public class FriendController {
 
     public void showPendingRequests(){
         System.out.println("ssss");
-        SavedData.getClientApp().showFriendRequests();
+        SavedData.getClientApp().showFriendsRequest();
         System.out.println(SavedData.getFriendRequests());
         pendingRequests.getItems().addAll(SavedData.getFriendRequests());
     }
