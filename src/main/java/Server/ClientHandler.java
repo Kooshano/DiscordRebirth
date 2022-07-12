@@ -359,10 +359,10 @@ public class ClientHandler implements Runnable {
             }
         }
         if (!foundUser) {
-            SavedData.setFriendRequestResponse("Hm, didn't work. Double check that the capitalization,\n" +
-                    "spelling, any spaces, and numbers are correct.");
+            outputStream.writeObject(new Message("Server","Hm, didn't work. Double check that the capitalization,\n" +
+                    "spelling, any spaces, and numbers are correct.",null,"friendRequestEligibility"));
         } else {
-            SavedData.setFriendRequestResponse("Friend Request Sent Successfully.");
+            outputStream.writeObject(new Message("Server","Friend Request Sent Successfully.",null,"friendRequestEligibility"));
         }
     }
 
