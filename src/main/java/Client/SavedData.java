@@ -54,4 +54,8 @@ public class SavedData {
     public static ArrayList<String> getFriendRequests() {
         return friendRequests;
     }
+
+    public static void clearFriendsRequest() {
+        friendRequests.clear();
+    }
 }

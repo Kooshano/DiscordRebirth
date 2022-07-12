@@ -572,6 +572,7 @@ public class ClientApp {
         clientSenderThread.start();
     }
     public void showFriendsRequest(){
+        SavedData.clearFriendsRequest();
         ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), null, null, "friendRequestHistory");
         Thread clientSenderThread = new Thread(clientMessageSender);
         clientSenderThread.start();
