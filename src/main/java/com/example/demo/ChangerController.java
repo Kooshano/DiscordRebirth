@@ -16,9 +16,11 @@ import java.io.IOException;
 public class ChangerController {
 
     @FXML
-    Label messageLabel;
+    private Label messageLabel;
     @FXML
-    TextField changeTextField;
+    private TextField changeTextField;
+    @FXML
+    private Label validityLabel;
 
     private Client client;
     private String changeWhat;
@@ -52,13 +54,17 @@ public class ChangerController {
     }
 
 
-    public void change(ActionEvent event) throws IOException {
+    public void change(ActionEvent event) throws IOException, InterruptedException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
         root = loader.load();
 
 
         if (changeWhat.equals("password")){
-            SavedData.getClientApp().changePassword(changeTextField.getText());
+            if (checkPassword(changeTextField.getText())){
+                SavedData.getClientApp().changePassword(changeTextField.getText());
+            }
+            else {
+            }
         }
 
         ProfilePageController profilePageController = loader.getController();
@@ -79,5 +85,21 @@ public class ChangerController {
 
     public Label getMessageLabel() {
         return messageLabel;
+    }
+
+    public boolean checkPassword(String password) {
+        if (password.length() < 8) {
+            return false;
+        }
+        if (!password.matches(".*[A-Z].*")) {
+            return false;
+        }
+        if (!password.matches(".*[a-z].*")) {
+            return false;
+        }
+        if (!password.matches(".*[0-9].*")) {
+            return false;
+        }
+        return true;
     }
 }

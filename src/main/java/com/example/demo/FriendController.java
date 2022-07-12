@@ -2,16 +2,26 @@ package com.example.demo;
 
 import Client.*;
 import Client.SavedData;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import static javafx.scene.paint.Color.GREEN;
 import static javafx.scene.paint.Color.RED;
 
-public class FriendController {
+public class FriendController implements Initializable {
 
     @FXML
     private TextField addFriendText;
@@ -21,6 +31,14 @@ public class FriendController {
     private ListView allFriendsListView;
     @FXML
     private ListView pendingRequests;
+    @FXML
+    private Label chosenPending;
+
+    private Client client;
+
+    private Parent root;
+    private Scene scene;
+    private Stage stage;
 
     public void addFriend(ActionEvent event) throws InterruptedException {
         if (friendRequestResultLabel.equals("Hm, didn't work. Double check that the capitalization,\n" +
@@ -42,14 +60,57 @@ public class FriendController {
         friendRequestResultLabel.setText(result);
     }
 
-    public void showPendingRequests() throws IOException {
+    public void showPendingRequests() throws IOException, InterruptedException {
         SavedData.getClientApp().showFriendsRequest();
+        Thread.sleep(500);
         System.out.println("damoon" + SavedData.getFriendRequests());
-        pendingRequests.getItems().removeAll();
         System.out.println("666" + pendingRequests.getItems());
-        pendingRequests.getItems().addAll(SavedData.getFriendRequests());
+        pendingRequests.getItems().setAll(SavedData.getFriendRequests());
+
 
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        pendingRequests.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                chosenPending.setText((String)pendingRequests.getSelectionModel().getSelectedItem());
+            }
+        });
+    }
+
+    public void acceptPending(ActionEvent event){
+        Object delete = null;
+        for (Object i :pendingRequests.getItems()){
+            String name = (String) i;
+            if (name.equals(chosenPending.getText())) {
+                delete = i;
+                break;
+            }
+        }
+        pendingRequests.getItems().remove(delete);
+    }
+
+    public void rejectPending(ActionEvent event){
+
+    }
+
+    public void back(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Account.fxml"));
+        root = loader.load();
+        AccountController accountController = loader.getController();
+        accountController.setClient(client);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
+        scene = new Scene(root);
+        stage.setTitle("Discord");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 }

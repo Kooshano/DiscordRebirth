@@ -32,8 +32,8 @@ public class AccountController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Friends.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        FriendController friendController = loader.getController();
-//        friendController.showPendingRequests();
+        FriendController friendController = loader.getController();
+        friendController.setClient(client);
         stage.setResizable(false);
         Scene scene = new Scene(root);
         stage.setTitle("Discord");

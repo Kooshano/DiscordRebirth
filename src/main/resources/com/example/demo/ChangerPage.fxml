@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="313.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ChangerController">
    <children>
-      <Label fx:id="messageLabel" layoutX="40.0" layoutY="23.0" prefHeight="110.0" prefWidth="398.0" textAlignment="CENTER">
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="40.0" layoutY="23.0" prefHeight="110.0" prefWidth="398.0" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
@@ -16,5 +16,10 @@
       <TextField fx:id="changeTextField" layoutX="126.0" layoutY="157.0" prefHeight="26.0" prefWidth="226.0" />
       <Button layoutX="352.0" layoutY="240.0" onAction="#change" prefHeight="26.0" prefWidth="69.0" text="change" />
       <Button layoutX="74.0" layoutY="241.0" mnemonicParsing="false" onAction="#back" text="&lt;----Back" />
+      <Label fx:id="validityLabel" alignment="CENTER" layoutX="131.0" layoutY="185.0" prefHeight="38.0" prefWidth="218.0" text="SSSS" visible="false">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -11,13 +11,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.FriendController">
    <children>
-      <TabPane layoutY="1.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="400.0" prefWidth="548.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="pendingTab" onSelectionChanged="#showPendingRequests" text="Pending">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="pendingRequests" layoutX="12.0" layoutY="16.0" prefHeight="338.0" prefWidth="574.0" />
+                        <ListView fx:id="pendingRequests" layoutX="12.0" layoutY="16.0" prefHeight="338.0" prefWidth="456.0" />
+                        <Button layoutX="476.0" layoutY="23.0" mnemonicParsing="false" onAction="#acceptPending" prefHeight="26.0" prefWidth="28.0" style="-fx-background-radius: 1000; -fx-background-color: #00FF00;" text="✅" />
+                        <Button layoutX="516.0" layoutY="23.0" mnemonicParsing="false" onAction="#rejectPending" prefHeight="26.0" prefWidth="28.0" style="-fx-background-radius: 1000; -fx-background-color: #FF0000;" text="❌" />
+                        <Label fx:id="chosenPending" alignment="CENTER" layoutX="468.0" layoutY="60.0" prefHeight="26.0" prefWidth="82.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -50,12 +53,12 @@
                            </font>
                         </Label>
                         <Button fx:id="friendRequestButton" layoutX="253.0" layoutY="123.0" mnemonicParsing="false" onAction="#addFriend" text="Send request" />
-                        <Button layoutX="162.0" layoutY="239.0" mnemonicParsing="false" onAction="#showPendingRequests" text="Button" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
         </tabs>
       </TabPane>
+      <Button layoutX="548.0" mnemonicParsing="false" onAction="#back" text="&lt;---" />
    </children>
 </AnchorPane>
