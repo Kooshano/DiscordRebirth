@@ -29,7 +29,7 @@ public class FriendController {
             Thread.sleep(500);
         }
         SavedData.getClientApp().sendFriendRequest(addFriendText.getText());
-        Thread.sleep(500);
+        Thread.sleep(1000);
         System.out.println(SavedData.getFriendRequestResponse());
         String result = SavedData.getFriendRequestResponse();
         if (result.equals("Hm, didn't work. Double check that the capitalization,\n" +
@@ -45,9 +45,9 @@ public class FriendController {
     public void showPendingRequests() throws IOException {
         System.out.println("ssss");
         SavedData.getClientApp().showFriendsRequest();
-        System.out.println(SavedData.getFriendRequests());
-        ClientApp clientApp = new ClientApp();
-        SavedData.setClientApp(clientApp);
+        System.out.println("damoon" + SavedData.getFriendRequests());
+        pendingRequests.getItems().removeAll();
+        System.out.println("^666" + pendingRequests.getItems());
         pendingRequests.getItems().addAll(SavedData.getFriendRequests());
 
     }
