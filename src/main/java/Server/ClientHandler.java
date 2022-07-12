@@ -705,7 +705,7 @@ public class ClientHandler implements Runnable {
      */
     public void friendRequestHistory(Message message) throws IOException {
         for (Message checkMessage : Data.getAllMessages()) {
-            if (checkMessage.getReceiver().equals(message.getSender()) && Objects.equals(checkMessage.getType(), "friendRequest")) {
+            if (Objects.equals(checkMessage.getType(), "friendRequest") && checkMessage.getReceiver().equals(message.getSender())) {
                 outputStream.writeObject(new Message(checkMessage.getSender(), null, checkMessage.getReceiver(), "friendRequestHistoryResponse"));
             }
         }
