@@ -48,14 +48,7 @@ public class ClientApp {
             }
             //see received friend requests and answer them
             else if (inp.equals("3")) {
-                ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), null, null, "friendRequestHistory");
-                Thread clientSenderThread = new Thread(clientMessageSender);
-                clientSenderThread.start();
-                try {
-                    clientSenderThread.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
             }
             //see a list of friends and their state
             else if (inp.equals("4")) {
@@ -577,6 +570,16 @@ public class ClientApp {
         ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), receiver, null, "friendRequest");
         Thread clientSenderThread = new Thread(clientMessageSender);
         clientSenderThread.start();
+    }
+    public void showFriendRequests(){
+        ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), null, null, "friendRequestHistory");
+        Thread clientSenderThread = new Thread(clientMessageSender);
+        clientSenderThread.start();
+        try {
+            clientSenderThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -7,6 +7,7 @@ public class SavedData {
     private static Client client;
     private static ArrayList<String> friends = new ArrayList<>();
     private static String friendRequestResponse;
+    private static ArrayList<String> friendRequests = new ArrayList<>();
     public SavedData(ClientApp clientApp) {
         SavedData.clientApp = clientApp;
         SavedData.client = clientApp.getClient();
@@ -45,5 +46,8 @@ public class SavedData {
 
     public static ArrayList<String> getFriends() {
         return friends;
+    }
+    public static void addToFriendRequest(String friendRequest) {
+        friendRequests.add(friendRequest);
     }
 }
