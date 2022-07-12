@@ -786,32 +786,6 @@ public class ClientHandler implements Runnable {
         Data.removeFriendRequest(message);
         Data.removeMessage(message);
         //approve the friend request or decline it
-        for (ClientHandler clientHandler : Server.getClients()) {
-            if (clientHandler.getClient().getUsername().equals(message.getSender())) {
-                clientHandler.getOutputStream().writeObject(new Message(message.getReceiver(), message.getBody(), message.getSender(), "friendRequestResponse"));
-            }
-            if (clientHandler.getClient().getUsername().equals(message.getReceiver())) {
-                clientHandler.getOutputStream().writeObject(message);
-            }
-        }
-        if (message.getBody().equals("yes")) {
-            Client sender = null;
-            Client receiver = null;
-            for (Client clientCheck : Data.getAllUsers()) {
-                if (clientCheck.getUsername().equals(message.getSender())) {
-                    sender = clientCheck;
-                }
-                if (clientCheck.getUsername().equals(message.getReceiver())) {
-                    receiver = clientCheck;
-                }
-            }
-            assert sender != null;
-            sender.addFriend(receiver);
-            assert receiver != null;
-            receiver.addFriend(sender);
-        }
-        Data.removeFriendRequest(message);
-        Data.removeMessage(message);
 
     }
 
