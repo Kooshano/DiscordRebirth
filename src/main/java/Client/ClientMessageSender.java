@@ -36,12 +36,6 @@ public class ClientMessageSender implements Runnable {
             sendFriendRequestHistory(sender);
         } else if (messageKind.equals("requestFriendList")) {
             sendFriendListRequest(sender);
-            while (true) {
-                String inp = input.nextLine();
-                if (Objects.equals(inp, "exit")) {
-                    break;
-                }
-            }
         } else if (messageKind.equals("changeStateRequest")) {
             sendChangeStateRequest(sender, secondData);
         } else if (messageKind.equals("blockRequest")) {

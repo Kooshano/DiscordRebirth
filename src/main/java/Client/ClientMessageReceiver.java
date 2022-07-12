@@ -55,7 +55,8 @@ public class ClientMessageReceiver implements Runnable {
                             //Message decision = new Message(message.getSender(), answer, message.getSender(), "Decline");
                         }
                     } else if (message.getType().equals("friendListResponse")) {
-                        SavedData.addToFriends(message.getSender() + "-" + message.getBody());
+                        SavedData.addToFriends(message.getSender() + ": " + message.getBody());
+                        System.out.println(SavedData.getFriends());
                     } else if (message.getType().equals("historyResponse")) {
                         System.out.println(message.getSender() + ": " + message.getBody());
                     } else if (message.getType().equals("showGroupsResponse")) {
@@ -63,14 +64,14 @@ public class ClientMessageReceiver implements Runnable {
                     } else if (message.getType().equals("warning")) {
                         System.out.println(message.getBody());
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("Account.fxml"));
-                        Parent root = loader.load();
-                        Stage stage = new Stage();
-                        //stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        stage.setResizable(false);
-                        Scene scene = new Scene(root);
-                        stage.setTitle("Discord");
-                        stage.setScene(scene);
-                        stage.show();
+//                        Parent root = loader.load();
+//                        Stage stage = new Stage();
+//                        //stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                        stage.setResizable(false);
+//                        Scene scene = new Scene(root);
+//                        stage.setTitle("Discord");
+//                        stage.setScene(scene);
+//                        stage.show();
                     } else if (message.getType().equals("terminate")) {
                         if (message.getBody() != null) {
                             System.out.println(message.getBody());

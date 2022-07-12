@@ -549,22 +549,12 @@ public class ClientApp {
         ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), state, null, "changeStateRequest");
         Thread clientSenderThread = new Thread(clientMessageSender);
         clientSenderThread.start();
-        try {
-            clientSenderThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
     public void showFriends(){
         SavedData.clearFriends();
         ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), null, null, "requestFriendList");
         Thread clientSenderThread = new Thread(clientMessageSender);
         clientSenderThread.start();
-        try {
-            clientSenderThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
     public void sendFriendRequest(String receiver){
         ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), receiver, null, "friendRequest");

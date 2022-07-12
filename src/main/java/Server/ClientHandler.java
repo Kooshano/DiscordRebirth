@@ -733,9 +733,10 @@ public class ClientHandler implements Runnable {
      * @throws IOException
      */
     public void friendList(Message message) throws IOException {
-        for (ClientHandler clientHandler : Server.getClients()) {
-            if (clientHandler.getClient().getUsername().equals(message.getSender())) {
-                for (Client friend : clientHandler.getClient().getFriends()) {
+        for (Client clientCheck : Data.getAllUsers()) {
+            System.out.println("Friends: " + clientCheck.getFriends());
+            if (clientCheck.getUsername().equals(message.getSender())) {
+                for (Client friend : clientCheck.getFriends()) {
                     System.out.println(friend.getUsername() + " " + friend.getState());
                     //if the client is online then we show the chosen state otherwise we show offline
                     if (friend.getCurrentState().equals("Online")) {
@@ -755,6 +756,7 @@ public class ClientHandler implements Runnable {
      * @throws IOException
      */
     public void friendRequestResponse(Message message) throws IOException {
+        System.out.println(message.getSender() + " " + message.getReceiver() + " " + message.getBody());
         //approve the friend request or decline it
         for (ClientHandler clientHandler : Server.getClients()) {
             if (clientHandler.getClient().getUsername().equals(message.getSender())) {
@@ -767,12 +769,13 @@ public class ClientHandler implements Runnable {
         if (message.getBody().equals("yes")) {
             Client sender = null;
             Client receiver = null;
-            for (ClientHandler clientHandler : Server.getClients()) {
-                if (clientHandler.getClient().getUsername().equals(message.getSender())) {
-                    sender = clientHandler.getClient();
+            for (Client clientHandler : Data.getAllUsers()) {
+                System.out.println(clientHandler.getUsername());
+                if (clientHandler.getUsername().equals(message.getSender())) {
+                    sender = clientHandler;
                 }
-                if (clientHandler.getClient().getUsername().equals(message.getReceiver())) {
-                    receiver = clientHandler.getClient();
+                if (clientHandler.getUsername().equals(message.getReceiver())) {
+                    receiver = clientHandler;
                 }
             }
             assert sender != null;
@@ -794,12 +797,12 @@ public class ClientHandler implements Runnable {
         if (message.getBody().equals("yes")) {
             Client sender = null;
             Client receiver = null;
-            for (ClientHandler clientHandler : Server.getClients()) {
-                if (clientHandler.getClient().getUsername().equals(message.getSender())) {
-                    sender = clientHandler.getClient();
+            for (Client clientCheck : Data.getAllUsers()) {
+                if (clientCheck.getUsername().equals(message.getSender())) {
+                    sender = clientCheck;
                 }
-                if (clientHandler.getClient().getUsername().equals(message.getReceiver())) {
-                    receiver = clientHandler.getClient();
+                if (clientCheck.getUsername().equals(message.getReceiver())) {
+                    receiver = clientCheck;
                 }
             }
             assert sender != null;
