@@ -63,8 +63,6 @@ public class FriendController implements Initializable {
     public void showPendingRequests() throws IOException, InterruptedException {
         SavedData.getClientApp().showFriendsRequest();
         Thread.sleep(500);
-        System.out.println("damoon" + SavedData.getFriendRequests());
-        System.out.println("666" + pendingRequests.getItems());
         pendingRequests.getItems().setAll(SavedData.getFriendRequests());
 
 
@@ -82,6 +80,7 @@ public class FriendController implements Initializable {
     }
 
     public void acceptPending(ActionEvent event){
+        SavedData.getClientApp().answerFriendRequest(chosenPending.getText(),"yes");
         Object delete = null;
         for (Object i :pendingRequests.getItems()){
             String name = (String) i;
@@ -94,7 +93,17 @@ public class FriendController implements Initializable {
     }
 
     public void rejectPending(ActionEvent event){
+        SavedData.getClientApp().answerFriendRequest(chosenPending.getText(),"no");
 
+        Object delete = null;
+        for (Object i :pendingRequests.getItems()){
+            String name = (String) i;
+            if (name.equals(chosenPending.getText())) {
+                delete = i;
+                break;
+            }
+        }
+        pendingRequests.getItems().remove(delete);
     }
 
     public void back(ActionEvent event) throws IOException {
@@ -112,5 +121,11 @@ public class FriendController implements Initializable {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public void showAllFriends() throws InterruptedException {
+        SavedData.getClientApp().showFriends();
+        Thread.sleep(500);
+        allFriendsListView.getItems().setAll(SavedData.getFriends());
     }
 }
