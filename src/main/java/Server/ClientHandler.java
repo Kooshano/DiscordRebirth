@@ -156,8 +156,7 @@ public class ClientHandler implements Runnable {
                         showBannableUsers(message);
                     } else if (message.getType().equals("showBannableChannelsRequest")) {
                         showBannableChannels(message);
-                    }
-                    else {
+                    } else {
                         for (ClientHandler clientHandler : Server.getClients()) {
                             clientHandler.getOutputStream().writeObject(message);
                         }
@@ -360,11 +359,10 @@ public class ClientHandler implements Runnable {
             }
         }
         if (!foundUser) {
-            for (ClientHandler clientHandlerFound : Server.getClients()) {
-                if (clientHandlerFound.getClient().getUsername().equals(message.getSender())) {
-                    clientHandlerFound.getOutputStream().writeObject(new Message("Server", "User " + message.getReceiver() + " is not Available.", message.getSender(), "warning"));
-                }
-            }
+            SavedData.setFriendRequestResponse("Hm, didn't work. Double check that the capitalization,\n" +
+                    "spelling, any spaces, and numbers are correct.");
+        } else {
+            SavedData.setFriendRequestResponse("Friend Request Sent Successfully.");
         }
     }
 
@@ -1163,7 +1161,6 @@ public class ClientHandler implements Runnable {
     }
 
     /**
-     *
      * @param profileSocket
      * @throws IOException
      * @throws ClassNotFoundException
@@ -1181,6 +1178,7 @@ public class ClientHandler implements Runnable {
 
     /**
      * show channels that a user can be banned from
+     *
      * @param message the user you want to see banned channels from
      * @throws IOException
      */

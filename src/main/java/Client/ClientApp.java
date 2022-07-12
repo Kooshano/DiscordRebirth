@@ -44,11 +44,7 @@ public class ClientApp {
             }
             //send a friend request to another client
             else if (inp.equals("2")) {
-                System.out.println("Enter receiver name");
-                String receiver = input.nextLine();
-                ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), receiver, null, "friendRequest");
-                Thread clientSenderThread = new Thread(clientMessageSender);
-                clientSenderThread.start();
+
             }
             //see received friend requests and answer them
             else if (inp.equals("3")) {
@@ -63,14 +59,7 @@ public class ClientApp {
             }
             //see a list of friends and their state
             else if (inp.equals("4")) {
-                ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), null, null, "requestFriendList");
-                Thread clientSenderThread = new Thread(clientMessageSender);
-                clientSenderThread.start();
-                try {
-                    clientSenderThread.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
             }
             //change the user state
             else if (inp.equals("5")) {
@@ -572,5 +561,21 @@ public class ClientApp {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+    public void showFriends(){
+        SavedData.clearFriends();
+        ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), null, null, "requestFriendList");
+        Thread clientSenderThread = new Thread(clientMessageSender);
+        clientSenderThread.start();
+        try {
+            clientSenderThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    public void sendFriendRequest(String receiver){
+        ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), receiver, null, "friendRequest");
+        Thread clientSenderThread = new Thread(clientMessageSender);
+        clientSenderThread.start();
     }
 }

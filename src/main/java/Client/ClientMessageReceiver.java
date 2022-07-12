@@ -35,7 +35,7 @@ public class ClientMessageReceiver implements Runnable {
                             System.out.println(message.getSender() + ": " + message.getBody());
                         }
                     } else if (message.getType().equals("friendRequestHistoryResponse")) {
-                        System.out.println(message.getSender() + " wants to be your friend. Do you Accept? Yes,No");
+                        System.out.println(message.getSender());
 
                     } else if (message.getType().equals("friendRequestResponse")) {
                         if (message.getBody().equals("yes")) {
@@ -44,10 +44,9 @@ public class ClientMessageReceiver implements Runnable {
                         } else if (message.getBody().equals("no")) {
                             System.out.println(message.getSender() + " have rejected your friend request");
                             //Message decision = new Message(message.getSender(), answer, message.getSender(), "Decline");
-
                         }
                     } else if (message.getType().equals("friendListResponse")) {
-                        System.out.println(message.getSender() + " " + message.getBody());
+                        SavedData.addToFriends(message.getSender() + " " + message.getBody());
                     } else if (message.getType().equals("historyResponse")) {
                         System.out.println(message.getSender() + ": " + message.getBody());
                     } else if (message.getType().equals("showGroupsResponse")) {
