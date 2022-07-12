@@ -34,13 +34,6 @@ public class ClientMessageSender implements Runnable {
             sendFriendRequest(sender, secondData);
         } else if (messageKind.equals("friendRequestHistory")) {
             sendFriendRequestHistory(sender);
-//            while (true) {
-//                String inp = input.nextLine();
-//                if (Objects.equals(inp, "exit")) {
-//                    break;
-//                }
-//                answerFriendRequest(sender, inp.split(" ")[1], inp.split(" ")[0]);
-//            }
         } else if (messageKind.equals("requestFriendList")) {
             sendFriendListRequest(sender);
             while (true) {
@@ -111,6 +104,8 @@ public class ClientMessageSender implements Runnable {
             banUser(sender, secondData, thirdData);
         } else if (messageKind.equals("showBannableChannelsRequest")) {
             showBannableChannels(sender, secondData, thirdData);
+        }else if (messageKind.equals("answerFriendRequest")) {
+            answerFriendRequest(sender, secondData, thirdData);
         }
     }
 

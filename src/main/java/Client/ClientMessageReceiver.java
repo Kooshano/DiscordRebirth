@@ -29,13 +29,15 @@ public class ClientMessageReceiver implements Runnable {
                 Object inp = in.readObject();
                 if(inp instanceof Message) {
                     Message message = (Message) inp;
+                    System.out.println(message.getType());
                     if (message.getType().equals("private")) {
                         //if we are in the same chat
                         if (message.getSender().equals(currentChat)) {
-                            System.out.println(message.getSender() + ": " + message.getBody());
+                            SavedData.addToCurrentChatMessages(message);
                         }
                     } else if (message.getType().equals("friendRequestHistoryResponse")) {
                         SavedData.addToFriendRequest(message.getSender());
+                        System.out.println(SavedData.getFriendRequests());
                     } else if (message.getType().equals("friendRequestEligibility")) {
                         SavedData.setFriendRequestResponse(message.getBody());
                     }
@@ -99,7 +101,6 @@ public class ClientMessageReceiver implements Runnable {
                         if (message.getBody().equals("True")) {
                             System.out.println("You Entered channel");
                             channelChat = true;
-
                         } else if (message.getBody().equals("False")) {
                             System.out.println("Wrong Input");
                         }
@@ -115,7 +116,7 @@ public class ClientMessageReceiver implements Runnable {
                     } else if (message.getType().equals("showBannableUsersResponse")) {
                         System.out.println(message.getBody());
                     } else if (message.getType().equals("notification")) {
-                        System.out.println(message.getSender() + " : " + message.getBody() + " " + message.getReceiver());
+                        SavedData.addToNotifications(message);
                     } else if (message.getType().equals("showBannableChannelsResponse")) {
                         System.out.println(message.getBody());
                     }
