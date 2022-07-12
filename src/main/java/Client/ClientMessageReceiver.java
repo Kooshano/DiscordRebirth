@@ -48,7 +48,7 @@ public class ClientMessageReceiver implements Runnable {
                             //Message decision = new Message(message.getSender(), answer, message.getSender(), "Decline");
                         }
                     } else if (message.getType().equals("friendListResponse")) {
-                        SavedData.addToFriends(message.getSender() + " " + message.getBody());
+                        SavedData.addToFriends(message.getSender() + "-" + message.getBody());
                     } else if (message.getType().equals("historyResponse")) {
                         System.out.println(message.getSender() + ": " + message.getBody());
                     } else if (message.getType().equals("showGroupsResponse")) {
