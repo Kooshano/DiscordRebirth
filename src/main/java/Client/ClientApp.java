@@ -578,7 +578,7 @@ public class ClientApp {
         clientSenderThread.start();
     }
     public void answerFriendRequest(String receiver,String answer){
-        ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), answer, receiver, "answerFriendRequest");
+        ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, client.getUsername(), answer,receiver, "answerFriendRequest");
         Thread clientSenderThread = new Thread(clientMessageSender);
         clientSenderThread.start();
     }

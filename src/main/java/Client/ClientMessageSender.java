@@ -73,7 +73,6 @@ public class ClientMessageSender implements Runnable {
         } else if (messageKind.equals("channelChat")) {
             while (true) {
                 //input the context and send it
-
                 String inp = input.nextLine();
                 if (Objects.equals(inp, "exit")) {
                     break;
@@ -136,6 +135,7 @@ public class ClientMessageSender implements Runnable {
     }
 
     public static void answerFriendRequest(String sender, String answer, String receiver) {
+        System.out.println(sender + " " + answer + " " + receiver);
         Message message = new Message(sender, answer, receiver, "friendRequestResponse");
         try {
             out.writeObject(message);

@@ -368,9 +368,12 @@ public class ClientHandler implements Runnable {
         if (!foundUser) {
             outputStream.writeObject(new Message("Server", "Hm, didn't work. Double check that the capitalization,\n" +
                     "spelling, any spaces, and numbers are correct.", null, "friendRequestEligibility"));
+            outputStream.writeObject(new Message("Server", "Hm, didn't work. Double check that the capitalization,\n" +
+                    "spelling, any spaces, and numbers are correct.", null, "warning"));
         } else {
             if (isFriend) {
                 outputStream.writeObject(new Message("Server", "You are already friends with this user", null, "friendRequestEligibility"));
+                outputStream.writeObject(new Message("Server", "You are already friends with this user", null, "warning"));
             } else {
                 outputStream.writeObject(new Message("Server", "Friend Request Sent Successfully.", null, "friendRequestEligibility"));
             }

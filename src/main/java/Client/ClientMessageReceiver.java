@@ -1,6 +1,10 @@
 package Client;
 
 import Model.Message;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -17,17 +21,19 @@ public class ClientMessageReceiver implements Runnable {
     private ObjectInputStream in;
     private String currentChat;
     private Client client;
+
     public ClientMessageReceiver(ObjectInputStream in, String currentChat) {
         this.in = in;
         this.currentChat = currentChat;
     }
+
     @Override
     public void run() {
         while (true) {
             try {
                 Scanner scanner = new Scanner(System.in);
                 Object inp = in.readObject();
-                if(inp instanceof Message) {
+                if (inp instanceof Message) {
                     Message message = (Message) inp;
                     System.out.println(message.getType());
                     if (message.getType().equals("private")) {
@@ -40,8 +46,7 @@ public class ClientMessageReceiver implements Runnable {
                         System.out.println(SavedData.getFriendRequests());
                     } else if (message.getType().equals("friendRequestEligibility")) {
                         SavedData.setFriendRequestResponse(message.getBody());
-                    }
-                    else if (message.getType().equals("friendRequestResponse")) {
+                    } else if (message.getType().equals("friendRequestResponse")) {
                         if (message.getBody().equals("yes")) {
                             System.out.println("You are now friends with " + message.getSender());
                             //Message decision = new Message(message.getSender(), answer, message.getSender(), "Approve");
@@ -57,6 +62,15 @@ public class ClientMessageReceiver implements Runnable {
                         System.out.println(message.getBody());
                     } else if (message.getType().equals("warning")) {
                         System.out.println(message.getBody());
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Account.fxml"));
+                        Parent root = loader.load();
+                        Stage stage = new Stage();
+                        //stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        stage.setResizable(false);
+                        Scene scene = new Scene(root);
+                        stage.setTitle("Discord");
+                        stage.setScene(scene);
+                        stage.show();
                     } else if (message.getType().equals("terminate")) {
                         if (message.getBody() != null) {
                             System.out.println(message.getBody());
@@ -129,6 +143,7 @@ public class ClientMessageReceiver implements Runnable {
             }
         }
     }
+
     public boolean isFlag() {
         return flag;
     }
@@ -145,7 +160,7 @@ public class ClientMessageReceiver implements Runnable {
         this.status = status;
     }
 
-    public boolean isSign(){
+    public boolean isSign() {
         return sign;
     }
 
