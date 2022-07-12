@@ -36,6 +36,8 @@ public class FriendController implements Initializable {
     private Label chosenPending;
     @FXML
     private ListView onlineFriendsListView;
+    @FXML
+    private TextField blockText;
 
     private Client client;
 
@@ -130,6 +132,7 @@ public class FriendController implements Initializable {
     }
 
     public void block(){
+        SavedData.getClientApp().block(blockText.getText());
     }
 
     public void back(ActionEvent event) throws IOException {
