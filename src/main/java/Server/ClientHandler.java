@@ -351,18 +351,29 @@ public class ClientHandler implements Runnable {
      */
     public void friendRequest(Message message) throws IOException {
         boolean foundUser = false;
+        boolean isFriend = false;
         for (Client clientCheck : Data.getAllUsers()) {
             if (clientCheck.getUsername().equals(message.getReceiver())) {
                 if (!clientCheck.isBlocked(message.getSender())) {
                     foundUser = true;
                 }
+                for (Client friend : clientCheck.getFriends()) {
+                    if (friend.getUsername().equals(message.getSender())) {
+                        foundUser = true;
+                        isFriend = true;
+                    }
+                }
             }
         }
         if (!foundUser) {
-            outputStream.writeObject(new Message("Server","Hm, didn't work. Double check that the capitalization,\n" +
-                    "spelling, any spaces, and numbers are correct.",null,"friendRequestEligibility"));
+            outputStream.writeObject(new Message("Server", "Hm, didn't work. Double check that the capitalization,\n" +
+                    "spelling, any spaces, and numbers are correct.", null, "friendRequestEligibility"));
         } else {
-            outputStream.writeObject(new Message("Server","Friend Request Sent Successfully.",null,"friendRequestEligibility"));
+            if (isFriend) {
+                outputStream.writeObject(new Message("Server", "You are already friends with this user", null, "friendRequestEligibility"));
+            } else {
+                outputStream.writeObject(new Message("Server", "Friend Request Sent Successfully.", null, "friendRequestEligibility"));
+            }
         }
     }
 
@@ -725,9 +736,9 @@ public class ClientHandler implements Runnable {
                     System.out.println(friend.getUsername() + " " + friend.getState());
                     //if the client is online then we show the chosen state otherwise we show offline
                     if (friend.getCurrentState().equals("Online")) {
-                        outputStream.writeObject(new Message(friend.getUsername(), friend.getState(), message.getSender(), "friendListRespone"));
+                        outputStream.writeObject(new Message(friend.getUsername(), friend.getState(), message.getSender(), "friendListResponse"));
                     } else {
-                        outputStream.writeObject(new Message(friend.getUsername(), "Offline", message.getSender(), "friendListRespone"));
+                        outputStream.writeObject(new Message(friend.getUsername(), "Offline", message.getSender(), "friendListResponse"));
                     }
                 }
             }
