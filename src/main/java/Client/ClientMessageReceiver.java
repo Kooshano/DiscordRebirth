@@ -35,6 +35,7 @@ public class ClientMessageReceiver implements Runnable {
                             System.out.println(message.getSender() + ": " + message.getBody());
                         }
                     } else if (message.getType().equals("friendRequestHistoryResponse")) {
+                        System.out.println(message.getSender());
                         SavedData.addToFriendRequest(message.getSender());
                     } else if (message.getType().equals("friendRequestEligibility")) {
                         SavedData.setFriendRequestResponse(message.getBody());
