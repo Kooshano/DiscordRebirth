@@ -38,4 +38,12 @@ public class SavedData {
     public static void setFriendRequestResponse(String friendRequestResponse) {
         SavedData.friendRequestResponse = friendRequestResponse;
     }
+
+    public static String getFriendRequestResponse() {
+        return friendRequestResponse;
+    }
+
+    public static ArrayList<String> getFriends() {
+        return friends;
+    }
 }

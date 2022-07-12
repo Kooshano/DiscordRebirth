@@ -578,4 +578,5 @@ public class ClientApp {
         Thread clientSenderThread = new Thread(clientMessageSender);
         clientSenderThread.start();
     }
+
 }
