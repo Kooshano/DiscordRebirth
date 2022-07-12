@@ -36,8 +36,10 @@ public class ClientMessageReceiver implements Runnable {
                         }
                     } else if (message.getType().equals("friendRequestHistoryResponse")) {
                         System.out.println(message.getSender());
-
-                    } else if (message.getType().equals("friendRequestResponse")) {
+                    } else if (message.getType().equals("friendRequestEligibility")) {
+                        SavedData.setFriendRequestResponse(message.getBody());
+                    }
+                    else if (message.getType().equals("friendRequestResponse")) {
                         if (message.getBody().equals("yes")) {
                             System.out.println("You are now friends with " + message.getSender());
                             //Message decision = new Message(message.getSender(), answer, message.getSender(), "Approve");
