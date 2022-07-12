@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import static javafx.scene.paint.Color.*;
 
-public class AccountPageController {
+public class ProfilePageController {
 
     @FXML
     Label usernameLabel;
@@ -43,16 +43,14 @@ public class AccountPageController {
     private Parent root;
 
 
-    public AccountPageController() throws IOException {
+    public ProfilePageController() throws IOException {
     }
 
 
-    public void displayColor(){
+    public void display(){
         usernameLabel.setText(client.getUsername());
         emailLabel.setText(client.getEmail());
         phoneLabel.setText(client.getPhone());
-        informationPane.setBackground(new Background(new BackgroundFill(BLACK,null,null)));
-        wholePane.setBackground(new Background(new BackgroundFill(GRAY,null,null)));
     }
 
     public void logOut(ActionEvent event) throws IOException, InterruptedException {

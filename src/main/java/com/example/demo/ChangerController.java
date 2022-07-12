@@ -35,9 +35,9 @@ public class ChangerController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountPage.fxml"));
         root = loader.load();
 
-        AccountPageController accountPageController = loader.getController();
-        accountPageController.setClient(client);
-        accountPageController.displayColor();
+        ProfilePageController profilePageController = loader.getController();
+        profilePageController.setClient(client);
+        profilePageController.display();
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setResizable(false);
@@ -61,9 +61,9 @@ public class ChangerController {
             SavedData.getClientApp().changePassword(changeTextField.getText());
         }
 
-        AccountPageController accountPageController = loader.getController();
-        accountPageController.setClient(client);
-        accountPageController.displayColor();
+        ProfilePageController profilePageController = loader.getController();
+        profilePageController.setClient(client);
+        profilePageController.display();
 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setResizable(false);

@@ -37,7 +37,7 @@ public class SignInController {
 
     @FXML
     public void login(ActionEvent event) throws IOException, InterruptedException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Account.fxml"));
         root = loader.load();
         String username = usernameTextField.getText();
         String password = passwordField.getText();
@@ -48,10 +48,8 @@ public class SignInController {
 
         //System.out.println(state);
         if (state.equals("Signed In Successfully")) {
-            System.out.println("Signed In Successfully");
-            AccountPageController accountPageController = loader.getController();
-            accountPageController.setClient(client);
-            accountPageController.displayColor();
+            AccountController accountController = loader.getController();
+            accountController.setClient(client);
             messageLabel.setText(state);
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setResizable(false);
