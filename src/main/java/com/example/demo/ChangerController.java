@@ -32,7 +32,7 @@ public class ChangerController {
 
 
     public void back(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
         root = loader.load();
 
         ProfilePageController profilePageController = loader.getController();
@@ -53,7 +53,7 @@ public class ChangerController {
 
 
     public void change(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
         root = loader.load();
 
 

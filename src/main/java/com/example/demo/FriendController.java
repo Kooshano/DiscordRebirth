@@ -1,10 +1,12 @@
 package com.example.demo;
 
-import Client.Client;
+import Client.*;
 import Client.SavedData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.io.IOException;
 
 import static javafx.scene.paint.Color.GREEN;
 import static javafx.scene.paint.Color.RED;
@@ -40,12 +42,14 @@ public class FriendController {
         friendRequestResultLabel.setText(result);
     }
 
-    public void showPendingRequests(){
+    public void showPendingRequests() throws IOException {
         System.out.println("ssss");
         SavedData.getClientApp().showFriendsRequest();
-        
         System.out.println(SavedData.getFriendRequests());
+        ClientApp clientApp = new ClientApp();
+        SavedData.setClientApp(clientApp);
         pendingRequests.getItems().addAll(SavedData.getFriendRequests());
+
     }
 
 
