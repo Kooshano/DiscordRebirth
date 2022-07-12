@@ -116,7 +116,7 @@ public class ClientMessageReceiver implements Runnable {
                     } else if (message.getType().equals("showBannableUsersResponse")) {
                         System.out.println(message.getBody());
                     } else if (message.getType().equals("notification")) {
-                        System.out.println(message.getSender() + " : " + message.getBody() + " " + message.getReceiver());
+                        SavedData.addToNotifications(message);
                     } else if (message.getType().equals("showBannableChannelsResponse")) {
                         System.out.println(message.getBody());
                     }

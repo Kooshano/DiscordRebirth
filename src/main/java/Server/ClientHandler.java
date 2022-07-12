@@ -779,7 +779,7 @@ public class ClientHandler implements Runnable {
         }
         Data.removeFriendRequest(message);
         Data.removeMessage(message);
-//approve the friend request or decline it
+        //approve the friend request or decline it
         for (ClientHandler clientHandler : Server.getClients()) {
             if (clientHandler.getClient().getUsername().equals(message.getSender())) {
                 clientHandler.getOutputStream().writeObject(new Message(message.getReceiver(), message.getBody(), message.getSender(), "friendRequestResponse"));
