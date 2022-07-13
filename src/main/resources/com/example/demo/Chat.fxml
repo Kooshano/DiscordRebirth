@@ -28,6 +28,9 @@
       </VBox>
       <Button layoutX="14.0" layoutY="2.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="52.0" text="Back" />
       <Button layoutX="34.0" layoutY="368.0" mnemonicParsing="false" onAction="#chatHistory" prefHeight="26.0" prefWidth="53.0" text="refresh" />
-      <ColorPicker fx:id="chatColorPicker" layoutX="4.0" layoutY="45.0" onAction="#changeColor" prefHeight="25.0" prefWidth="83.0" />
+      <ColorPicker fx:id="backGroundColorPicker" layoutY="62.0" onAction="#changeBackGroundColor" prefHeight="25.0" prefWidth="88.0" />
+      <Label alignment="CENTER" layoutX="7.0" layoutY="45.0" prefHeight="17.0" prefWidth="66.0" text="Background" />
+      <Label alignment="CENTER" layoutX="19.0" layoutY="158.0" prefHeight="17.0" prefWidth="53.0" text="Text" />
+      <ColorPicker fx:id="textColorPicker" layoutX="1.0" layoutY="175.0" onAction="#changeTextColor" prefHeight="25.0" prefWidth="88.0" />
    </children>
 </Pane>

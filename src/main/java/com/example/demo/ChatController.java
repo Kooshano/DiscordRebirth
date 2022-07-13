@@ -28,10 +28,12 @@ public class ChatController {
     @FXML
     private Pane backGroundPane;
     @FXML
-    private ColorPicker chatColorPicker;
+    private ColorPicker backGroundColorPicker;
+    @FXML
+    private ColorPicker textColorPicker;
 
     private String username;
-    private Color color;
+    private Color backGroundColor;
 
     public void sendMessage(ActionEvent event) throws InterruptedException {
         if (!message.getText().equals("")) {
@@ -59,20 +61,37 @@ public class ChatController {
         chatLabel.setText(String.valueOf(stringBuilder));
     }
 
-    public void setColor(Color color){
-        this.color = color;
+    public void setBackGroundColor(Color color){
+        this.backGroundColor = color;
+        backGroundColorPicker.setValue(color);
         backGroundPane.setBackground(new Background(new BackgroundFill(color,null,null)));
         chatLabel.setBackground(new Background(new BackgroundFill(color,null,null)));
 
     }
 
-    public void changeColor(ActionEvent event){
-        Color color = chatColorPicker.getValue();
+    public void changeBackGroundColor(ActionEvent event){
+        Color color = backGroundColorPicker.getValue();
         backGroundPane.setBackground(new Background(new BackgroundFill(color,null,null)));
         chatLabel.setBackground(new Background(new BackgroundFill(color,null,null)));
-        SavedData.setColor(color);
-        setColor(color);
+        SavedData.setBackGroundColor(color);
+        setBackGroundColor(color);
     }
+
+    public void setTextColor(Color color){
+        this.backGroundColor = color;
+        textColorPicker.setValue(color);
+        chatLabel.setTextFill(color);
+
+    }
+
+    public void changeTextColor(ActionEvent event){
+        Color color = textColorPicker.getValue();
+        chatLabel.setTextFill(color);
+        SavedData.setTextColor(color);
+        setTextColor(color);
+    }
+
+
 
     public void back(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Account.fxml"));

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static javafx.scene.paint.Color.RED;
-import static javafx.scene.paint.Color.GREEN;
+
 public class GoToChatController {
 
     @FXML
@@ -37,6 +37,8 @@ public class GoToChatController {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             ChatController chatController = loader.getController();
             chatController.setUsername(username.getText());
+            chatController.setBackGroundColor(SavedData.getBackGroundColor());
+            chatController.setTextColor(SavedData.getTextColor());
             chatController.chatHistory();
             stage.setResizable(false);
             Scene scene = new Scene(root);

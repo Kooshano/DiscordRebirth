@@ -13,7 +13,9 @@ public class SavedData {
     private static ArrayList<String> friendRequests = new ArrayList<>();
     private static ArrayList<Message> currentChatMessages = new ArrayList<>();
     private static ArrayList<Message> notifications = new ArrayList<>();
-    private static Color color;
+    private static Color backGroundColor;
+    private static Color textColor;
+    private static String warning;
 
     public SavedData(ClientApp clientApp) {
         SavedData.clientApp = clientApp;
@@ -88,11 +90,28 @@ public class SavedData {
         return notifications;
     }
 
-    public static Color getColor() {
-        return color;
+    public static Color getBackGroundColor() {
+        return backGroundColor;
     }
 
-    public static void setColor(Color color) {
-        SavedData.color = color;
+    public static void setBackGroundColor(Color backGroundColor) {
+        SavedData.backGroundColor = backGroundColor;
+    }
+
+    public static Color getTextColor() {
+        return textColor;
+    }
+
+    public static void setTextColor(Color textColor) {
+        SavedData.textColor = textColor;
+    }
+
+
+    public static String getWarning() {
+        return warning;
+    }
+
+    public static void setWarning(String warning) {
+        SavedData.warning = warning;
     }
 }
