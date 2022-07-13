@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static javafx.scene.paint.Color.GREEN;
@@ -38,7 +39,8 @@ public class FriendController implements Initializable {
     private ListView onlineFriendsListView;
     @FXML
     private TextField blockText;
-
+    @FXML
+    private Label blockMessage;
     private Client client;
 
     private Parent root;
@@ -100,7 +102,6 @@ public class FriendController implements Initializable {
 
     public void rejectPending(ActionEvent event){
         SavedData.getClientApp().answerFriendRequest(chosenPending.getText(),"no");
-
         Object delete = null;
         for (Object i :pendingRequests.getItems()){
             String name = (String) i;
@@ -132,8 +133,17 @@ public class FriendController implements Initializable {
 
     }
 
-    public void block(){
+    public void block() throws InterruptedException {
         SavedData.getClientApp().block(blockText.getText());
+        Thread.sleep(500);
+        if(Objects.equals(SavedData.getWarning(), "User Not Found")){
+            blockMessage.setTextFill(RED);
+        }
+        else{
+            blockMessage.setTextFill(GREEN);
+        }
+        blockMessage.setText(SavedData.getWarning());
+        SavedData.setWarning("");
     }
 
     public void back(ActionEvent event) throws IOException {

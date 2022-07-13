@@ -64,7 +64,7 @@ public class ClientMessageReceiver implements Runnable {
                     } else if (message.getType().equals("showGroupsResponse")) {
                         System.out.println(message.getBody());
                     } else if (message.getType().equals("warning")) {
-                        System.out.println(message.getBody());
+                        SavedData.setWarning(message.getBody());
 //                        Platform.runLater(new Runnable() {
 //                            @Override
 //                            public void run() {
