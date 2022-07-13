@@ -147,7 +147,6 @@ public class ClientMessageSender implements Runnable {
      */
     public static void sendRequest(String sender, String receiver) {
         try {
-            System.out.println("*****" + sender + receiver);
             out.writeObject(new Message(sender, "", receiver, "historyRequest"));
         } catch (IOException e) {
             e.printStackTrace();

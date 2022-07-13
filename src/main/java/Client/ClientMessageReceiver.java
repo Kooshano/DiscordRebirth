@@ -60,7 +60,7 @@ public class ClientMessageReceiver implements Runnable {
                         SavedData.addToFriends(message.getSender() + ": " + message.getBody());
                         System.out.println(SavedData.getFriends());
                     } else if (message.getType().equals("historyResponse")) {
-                        System.out.println(message.getSender() + ": " + message.getBody());
+                        SavedData.addToCurrentChatMessages(message);
                     } else if (message.getType().equals("showGroupsResponse")) {
                         System.out.println(message.getBody());
                     } else if (message.getType().equals("warning")) {

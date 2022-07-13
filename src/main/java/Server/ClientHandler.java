@@ -293,9 +293,8 @@ public class ClientHandler implements Runnable {
     public void historyRequest(Message message) throws IOException {
         for (Message checkMessage : Data.getAllMessages()) {
             if (((checkMessage.getSender()!= null && checkMessage.getReceiver()!= null && checkMessage.getSender().equals(message.getSender()) && checkMessage.getReceiver().equals(message.getReceiver())) ||
-                    (checkMessage.getReceiver().equals(message.getSender()) && checkMessage.getSender().equals(message.getReceiver()))) && Objects.equals(checkMessage.getType(), "private")) {
+                    (checkMessage.getSender()!= null && checkMessage.getReceiver()!= null && checkMessage.getReceiver().equals(message.getSender()) && checkMessage.getSender().equals(message.getReceiver()))) && Objects.equals(checkMessage.getType(), "private")) {
                 for (ClientHandler clientHandler : Server.getClients()) {
-                    System.out.println(clientHandler.getClient().getUsername());
                     if (clientHandler.getClient().getUsername().equals(message.getReceiver())) {
                         clientHandler.getOutputStream().writeObject(new Message(checkMessage.getSender(), checkMessage.getBody(), checkMessage.getReceiver(), "historyResponse"));
                     }

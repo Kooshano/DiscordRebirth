@@ -517,6 +517,7 @@ public class ClientApp {
         return client;
     }
     public void openPrivateChat(String receiver){
+        SavedData.clearCurrentChatMessages();
         clientMessageReceiver.setCurrentChat(receiver);
         ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, receiver, client.getUsername(), null, "privateChatHistoryRequest");
         Thread clientSenderThread = new Thread(clientMessageSender);
