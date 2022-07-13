@@ -4,8 +4,15 @@ import Client.SavedData;
 import Model.Message;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ChatController {
 
@@ -19,8 +26,10 @@ public class ChatController {
         SavedData.getClientApp().sendPrivateChat(username,message.getText());
         String temp = chatLabel.getText();
         temp +="\n";
-        temp += SavedData.getClient().getUsername() + ": " + message.getText();
-        message.setText(temp);
+        temp += SavedData.getClientApp().getClient().getUsername() + ": " + message.getText();
+        chatLabel.setText(temp);
+        message.setText("");
+        SavedData.getClientApp().openPrivateChat(username);
 
     }
 
@@ -34,5 +43,16 @@ public class ChatController {
             stringBuilder.append(message.getSender() + ": " + message.getBody() + "\n");
         }
         chatLabel.setText(String.valueOf(stringBuilder));
+    }
+
+    public void back(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Account.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
+        Scene scene = new Scene(root);
+        stage.setTitle("Discord");
+        stage.setScene(scene);
+        stage.show();
     }
 }
