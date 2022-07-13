@@ -22,14 +22,21 @@ public class ChatController {
     private Label chatLabel;
     private String username;
 
-    public void sendMessage(ActionEvent event){
-        SavedData.getClientApp().sendPrivateChat(username,message.getText());
-        String temp = chatLabel.getText();
-        temp +="\n";
-        temp += SavedData.getClientApp().getClient().getUsername() + ": " + message.getText();
-        chatLabel.setText(temp);
-        message.setText("");
-        SavedData.getClientApp().openPrivateChat(username);
+    public void sendMessage(ActionEvent event) throws InterruptedException {
+        if (!message.getText().equals("")) {
+            SavedData.getClientApp().sendPrivateChat(username, message.getText());
+            String temp = chatLabel.getText();
+            temp += "\n";
+            temp += SavedData.getClientApp().getClient().getUsername() + ": " + message.getText();
+            chatLabel.setText(temp);
+            message.setText("");
+            SavedData.getClientApp().openPrivateChat(username);
+            Thread.sleep(500);
+            chatHistory();
+        }
+        else {
+            chatHistory();
+        }
 
     }
 
