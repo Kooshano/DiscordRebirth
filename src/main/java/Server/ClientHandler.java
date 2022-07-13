@@ -815,11 +815,11 @@ public class ClientHandler implements Runnable {
      */
     public void block(Message message) {
         //block user
-        for (ClientHandler clientHandler : Server.getClients()) {
-            if (clientHandler.getClient().getUsername().equals(message.getSender())) {
-                for (ClientHandler block : Server.getClients()) {
-                    if (block.getClient().getUsername().equals(message.getReceiver())) {
-                        clientHandler.getClient().blockUser(block.getClient());
+        for (Client clientCheck : Data.getAllUsers()) {
+            if (clientCheck.getUsername().equals(message.getSender())) {
+                for (Client block : Data.getAllUsers()) {
+                    if (block.getUsername().equals(message.getReceiver())) {
+                        clientCheck.blockUser(block);
                     }
                 }
             }
@@ -883,16 +883,21 @@ public class ClientHandler implements Runnable {
         boolean foundUser = false;
         for (ClientHandler clientHandler : Server.getClients()) {
             if (clientHandler.getClient().getUsername().equals(message.getReceiver())) {
-                if (!clientHandler.getClient().isBlocked(message.getSender())) {
-                    clientHandler.getOutputStream().writeObject(message);
-                    foundUser = true;
-                } else {
-                    for (ClientHandler findBlocked : Server.getClients()) {
-                        if (findBlocked.getClient().getUsername().equals(message.getSender())) {
-                            findBlocked.getOutputStream().writeObject(new Message("Server", "You have been blocked by " + message.getReceiver() + ".", message.getSender(), "private"));
+                for(Client clientCheck : Data.getAllUsers()){
+                    if(Objects.equals(clientCheck.getUsername(), message.getReceiver())){
+                        if (!clientCheck.isBlocked(message.getSender())) {
+                            clientHandler.getOutputStream().writeObject(message);
+                            foundUser = true;
+                        } else {
+                            for (ClientHandler findBlocked : Server.getClients()) {
+                                if (findBlocked.getClient().getUsername().equals(message.getSender())) {
+                                    System.out.println("blocked");
+                                    findBlocked.getOutputStream().writeObject(new Message(message.getReceiver(), "You have been blocked by " + message.getReceiver() + ".", message.getSender(), "private"));
+                                }
+                            }
+                            Data.removeMessage(message);
                         }
                     }
-                    Data.removeMessage(message);
                 }
             }
         }
