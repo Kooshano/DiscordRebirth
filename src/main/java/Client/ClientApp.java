@@ -518,17 +518,14 @@ public class ClientApp {
     }
     public void openPrivateChat(String receiver){
         clientMessageReceiver.setCurrentChat(receiver);
+        ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, receiver, client.getUsername(), null, "privateChatHistoryRequest");
+        Thread clientSenderThread = new Thread(clientMessageSender);
+        clientSenderThread.start();
     }
     public void sendPrivateChat(String receiver,String message){
         ClientMessageSender clientMessageSender = new ClientMessageSender(outputStream, receiver, client.getUsername(), message, "private");
         Thread clientSenderThread = new Thread(clientMessageSender);
         clientSenderThread.start();
-        //wait for Threads to finish
-        try {
-            clientSenderThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         //resetting current chat
     }
     public void closePrivateChat(String receiver){

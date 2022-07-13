@@ -28,8 +28,9 @@ public class ClientMessageSender implements Runnable {
     public void run() {
         if (messageKind.equals("private")) {
             //send a request to server for chat history
-            sendRequest(sender, secondData);
             sendPrivateMessage(sender, thirdData, secondData);
+        } else if (messageKind.equals("privateChatHistoryRequest")) {
+            sendRequest(sender, secondData);
         } else if (messageKind.equals("friendRequest")) {
             sendFriendRequest(sender, secondData);
         } else if (messageKind.equals("friendRequestHistory")) {
@@ -97,7 +98,7 @@ public class ClientMessageSender implements Runnable {
             banUser(sender, secondData, thirdData);
         } else if (messageKind.equals("showBannableChannelsRequest")) {
             showBannableChannels(sender, secondData, thirdData);
-        }else if (messageKind.equals("answerFriendRequest")) {
+        } else if (messageKind.equals("answerFriendRequest")) {
             answerFriendRequest(sender, secondData, thirdData);
         }
     }
@@ -146,6 +147,7 @@ public class ClientMessageSender implements Runnable {
      */
     public static void sendRequest(String sender, String receiver) {
         try {
+            System.out.println("*****" + sender + receiver);
             out.writeObject(new Message(sender, "", receiver, "historyRequest"));
         } catch (IOException e) {
             e.printStackTrace();
