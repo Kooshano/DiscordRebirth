@@ -34,10 +34,6 @@ public class ChatController {
             Thread.sleep(500);
             chatHistory();
         }
-        else {
-            chatHistory();
-        }
-
     }
 
     public void setUsername(String username) {

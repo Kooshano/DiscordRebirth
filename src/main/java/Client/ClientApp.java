@@ -21,7 +21,7 @@ public class ClientApp {
 
     public ClientApp() throws IOException {
         //connect to the server using socket
-        socket = new Socket("172.23.158.75", 8080);
+        socket = new Socket("localhost", 8080);
         outputStream = new ObjectOutputStream(socket.getOutputStream());
         //outputStream.writeObject(client);
         inputStream = new ObjectInputStream(socket.getInputStream());
