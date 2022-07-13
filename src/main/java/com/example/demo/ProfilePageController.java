@@ -122,7 +122,6 @@ public class ProfilePageController {
         root = loader.load();
         AccountController accountController = loader.getController();
         accountController.setClient(client);
-        stage = new Stage();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setResizable(false);
         scene = new Scene(root);
