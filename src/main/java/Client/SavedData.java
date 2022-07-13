@@ -12,6 +12,7 @@ public class SavedData {
     private static ArrayList<String> friendRequests = new ArrayList<>();
     private static ArrayList<Message> currentChatMessages = new ArrayList<>();
     private static ArrayList<Message> notifications = new ArrayList<>();
+    private static String warning;
 
     public SavedData(ClientApp clientApp) {
         SavedData.clientApp = clientApp;
@@ -84,5 +85,13 @@ public class SavedData {
 
     public static ArrayList<Message> getNotifications() {
         return notifications;
+    }
+
+    public static void setWarning(String warning) {
+        SavedData.warning = warning;
+    }
+
+    public static String getWarning() {
+        return warning;
     }
 }

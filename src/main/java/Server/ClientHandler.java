@@ -291,15 +291,26 @@ public class ClientHandler implements Runnable {
      * @throws IOException
      */
     public void historyRequest(Message message) throws IOException {
+        boolean found = false;
         for (Message checkMessage : Data.getAllMessages()) {
-            if (((checkMessage.getSender()!= null && checkMessage.getReceiver()!= null && checkMessage.getSender().equals(message.getSender()) && checkMessage.getReceiver().equals(message.getReceiver())) ||
-                    (checkMessage.getSender()!= null && checkMessage.getReceiver()!= null && checkMessage.getReceiver().equals(message.getSender()) && checkMessage.getSender().equals(message.getReceiver()))) && Objects.equals(checkMessage.getType(), "private")) {
+            if (((checkMessage.getSender() != null && checkMessage.getReceiver() != null && checkMessage.getSender().equals(message.getSender()) && checkMessage.getReceiver().equals(message.getReceiver())) ||
+                    (checkMessage.getSender() != null && checkMessage.getReceiver() != null && checkMessage.getReceiver().equals(message.getSender()) && checkMessage.getSender().equals(message.getReceiver()))) && Objects.equals(checkMessage.getType(), "private")) {
                 for (ClientHandler clientHandler : Server.getClients()) {
                     if (clientHandler.getClient().getUsername().equals(message.getReceiver())) {
                         clientHandler.getOutputStream().writeObject(new Message(checkMessage.getSender(), checkMessage.getBody(), checkMessage.getReceiver(), "historyResponse"));
                     }
                 }
             }
+        }
+            for (Client clientCheck : Data.getAllUsers()) {
+                if (clientCheck.getUsername().equals(message.getSender())) {
+                    found = true;
+                    break;
+                }
+            }
+        if (!found) {
+            System.out.println("SHhHHHHH");
+            outputStream.writeObject(new Message(null, "User Not Found", null, "warning"));
         }
     }
 
@@ -813,17 +824,20 @@ public class ClientHandler implements Runnable {
      *
      * @param message the message containing the user to block and the user to block
      */
-    public void block(Message message) {
+    public void block(Message message) throws IOException {
         //block user
         for (Client clientCheck : Data.getAllUsers()) {
             if (clientCheck.getUsername().equals(message.getSender())) {
                 for (Client block : Data.getAllUsers()) {
                     if (block.getUsername().equals(message.getReceiver())) {
                         clientCheck.blockUser(block);
+                        outputStream.writeObject(new Message("Server", "User Blocked", message.getSender(), "warning"));
+                        return;
                     }
                 }
             }
         }
+        outputStream.writeObject(new Message("Server", "User Not Found", message.getSender(), "warning"));
     }
 
     /**
@@ -883,8 +897,8 @@ public class ClientHandler implements Runnable {
         boolean foundUser = false;
         for (ClientHandler clientHandler : Server.getClients()) {
             if (clientHandler.getClient().getUsername().equals(message.getReceiver())) {
-                for(Client clientCheck : Data.getAllUsers()){
-                    if(Objects.equals(clientCheck.getUsername(), message.getReceiver())){
+                for (Client clientCheck : Data.getAllUsers()) {
+                    if (Objects.equals(clientCheck.getUsername(), message.getReceiver())) {
                         if (!clientCheck.isBlocked(message.getSender())) {
                             clientHandler.getOutputStream().writeObject(message);
                             foundUser = true;

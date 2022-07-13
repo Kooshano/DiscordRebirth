@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="190.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GoToChatController">
    <children>
-      <TextField fx:id="username" layoutX="117.0" layoutY="44.0" prefHeight="26.0" prefWidth="343.0" promptText="Enter a username" />
-      <Button layoutX="252.0" layoutY="107.0" mnemonicParsing="false" onAction="#goToChat" text="Go to Chat" />
+      <TextField fx:id="username" layoutX="122.0" layoutY="14.0" prefHeight="40.0" prefWidth="356.0" promptText="Enter a username" />
+      <Button layoutX="251.0" layoutY="139.0" mnemonicParsing="false" onAction="#goToChat" text="Go to Chat" />
+      <Label fx:id="clientWarning" alignment="CENTER" layoutX="150.0" layoutY="67.0" prefHeight="56.0" prefWidth="278.0" />
    </children>
 </AnchorPane>
