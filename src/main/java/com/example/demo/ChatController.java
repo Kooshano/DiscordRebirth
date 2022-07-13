@@ -8,8 +8,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,7 +25,13 @@ public class ChatController {
     private TextField message;
     @FXML
     private Label chatLabel;
+    @FXML
+    private Pane backGroundPane;
+    @FXML
+    private ColorPicker chatColorPicker;
+
     private String username;
+    private Color color;
 
     public void sendMessage(ActionEvent event) throws InterruptedException {
         if (!message.getText().equals("")) {
@@ -46,6 +57,21 @@ public class ChatController {
             stringBuilder.append(message.getSender() + ": " + message.getBody() + "\n");
         }
         chatLabel.setText(String.valueOf(stringBuilder));
+    }
+
+    public void setColor(Color color){
+        this.color = color;
+        backGroundPane.setBackground(new Background(new BackgroundFill(color,null,null)));
+        chatLabel.setBackground(new Background(new BackgroundFill(color,null,null)));
+
+    }
+
+    public void changeColor(ActionEvent event){
+        Color color = chatColorPicker.getValue();
+        backGroundPane.setBackground(new Background(new BackgroundFill(color,null,null)));
+        chatLabel.setBackground(new Background(new BackgroundFill(color,null,null)));
+        SavedData.setColor(color);
+        setColor(color);
     }
 
     public void back(ActionEvent event) throws IOException {

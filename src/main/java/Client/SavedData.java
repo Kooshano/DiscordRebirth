@@ -1,6 +1,7 @@
 package Client;
 
 import Model.Message;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ public class SavedData {
     private static ArrayList<String> friendRequests = new ArrayList<>();
     private static ArrayList<Message> currentChatMessages = new ArrayList<>();
     private static ArrayList<Message> notifications = new ArrayList<>();
+    private static Color color;
 
     public SavedData(ClientApp clientApp) {
         SavedData.clientApp = clientApp;
@@ -84,5 +86,13 @@ public class SavedData {
 
     public static ArrayList<Message> getNotifications() {
         return notifications;
+    }
+
+    public static Color getColor() {
+        return color;
+    }
+
+    public static void setColor(Color color) {
+        SavedData.color = color;
     }
 }
